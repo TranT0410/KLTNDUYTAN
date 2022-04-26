@@ -9,7 +9,10 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
+
 use App\Models\Supplier;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +69,19 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('tax')->group(function () {
         Route::get('list', [TaxController::class, 'index'])
             ->name('admin.tax.list');
+
+        Route::get('create', [TaxController::class, 'create'])
+            ->name('admin.tax.create');
+
+        Route::post('create', [TaxController::class, 'store']);
+
+        Route::get('update/{id}', [TaxController::class, 'update'])
+            ->name('admin.tax.update');
+
+        Route::post('update/{id}', [TaxController::class, 'edit']);
+
+        Route::delete('delete/{id}', [TaxController::class, 'delete'])
+            ->name('admin.tax.delete');
     });
     Route::prefix('supplier')->group(function () {
         Route::get('list', [SupplierController::class, 'index'])
@@ -193,4 +209,19 @@ Route::get('home', [HomeController::class, 'index'])
 Route::prefix('home')->group(function () {
     Route::get('product-detail/{id?}', [ProductController::class, 'productDetail'])
         ->name('home.product.detail');
+
+    Route::get('my-cart', [CartController::class, 'index'])
+        ->name('home.cart.list');
+
+    Route::get('add-cart/{id}', [CartController::class, 'addCart'])
+        ->name('home.cart.add');
+
+    Route::post('update-cart', [CartController::class, 'updateCart'])
+        ->name('home.cart.update');
+
+    Route::delete('delete-cart', [CartController::class, 'deleteCart'])
+        ->name('home.cart.delete');
+
+    Route::get('checkout', [OrderController::class, 'checkout'])->middleware('admin.login')
+        ->name('home.checkout');
 });

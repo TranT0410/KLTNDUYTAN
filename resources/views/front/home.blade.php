@@ -83,7 +83,7 @@
 							<ul class="navbar_user">								
 								<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 								<li class="checkout">
-									<a href="cart.html">
+									<a href="{{route('home.cart.list')}}">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 										<span id="checkout_items" class="checkout_items">2</span>
 									</a>
@@ -180,7 +180,7 @@
 									<div class="product_price">{{$price_product}}</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<div class="red_button add_to_cart_button"><a href="{{route('home.cart.add',$product->id)}}">add to cart</a></div>
 						</div>
 						@endforeach
 					</div>

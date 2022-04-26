@@ -14,10 +14,6 @@ class Supplier extends Model
         'phone',
         'user_id'
     ];
-    public function taxation()
-    {
-        return $this->hasMany(Tax::class);
-    }
 
     public function users()
     {

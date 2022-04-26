@@ -13,18 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('taxation', function (Blueprint $table) {
+        Schema::create('taxes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->float('rate_tax');
             $table->date('date_start');
             $table->date('date_end');
-            $table->unsignedBigInteger('supplier_id');
             $table->timestamps();
-
-            $table->foreign('supplier_id')
-                ->references('id')->on('suppliers')
-                ->cascadeOnDelete();
         });
     }
 
@@ -35,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taxation');
+        Schema::dropIfExists('taxes');
     }
 };

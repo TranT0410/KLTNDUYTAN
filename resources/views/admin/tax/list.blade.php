@@ -15,7 +15,7 @@
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
-                            {{-- <a href="{{route('admin.tax.create')}}" class="btn btn-success">Add</a> --}}
+                            <a href="{{route('admin.tax.create')}}" class="btn btn-success">Add</a>
                         </div>
                     </div>
                     <div class="pb-20">
@@ -25,7 +25,7 @@
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Rate</th>
-                                <th>Date Start/th>
+                                <th>Date Start</th>
                                 <th>Date End</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
@@ -39,21 +39,21 @@
                                     <td>{{$row->date_start}}</td>
                                     <td>{{$row->date_end}}</td>
                                     <td>
-                                        {{-- <div class="dropdown">
+                                        <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
                                                    href="#" role="button" data-toggle="dropdown">
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                     <a class="dropdown-item"
-                                                       href="{{route('admin.tax.edit',$row->id)}}"><i
+                                                       href="{{route('admin.tax.update',$row->id)}}"><i
                                                             class="dw dw-edit2"></i> Edit</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('admin.tax.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
                                                             Delete</a>
                                                 </div>
-                                        </div> --}}
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

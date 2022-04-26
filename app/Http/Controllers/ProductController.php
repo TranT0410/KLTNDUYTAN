@@ -14,7 +14,6 @@ class ProductController extends Controller
     {
         $products = Product::paginate(config('constants.paginate_10'));
 
-
         return view('supplier.product.list', compact('products'));
     }
 

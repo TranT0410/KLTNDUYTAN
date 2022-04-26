@@ -18,3 +18,11 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+	
+	<link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
+	<link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
+	<link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+	<link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap')}}"
+		rel="stylesheet">
+	<link href="{{asset('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap')}}" rel="stylesheet">
+	<link href="{{asset('https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap')}}" rel="stylesheet">

@@ -13,16 +13,29 @@
 
               <!-- Account -->
 
-              <li class="language">
-                <a href="signup.html">						
-                  ĐĂNG KÍ
-                </a>
-              </li>
-              <li class="account">
-                <a href="login.html">
-                  ĐĂNG NHẬP
-                </a>
-              </li>
+              <?php if(auth()->user()){?>
+								<li class="language">
+									<a href="#">						
+										{{auth()->user()->name}}
+									</a>
+								</li>
+								<li class="language">
+									<a href="{{route('admin.logout')}}">						
+										Logout
+									</a>
+								</li>
+								<?php }else {?>
+								<li class="language">
+									<a href="{{route('admin.user.register')}}">						
+										ĐĂNG KÍ
+									</a>
+								</li>
+								<li class="account">
+									<a href="{{route('admin.user.login')}}">
+										ĐĂNG NHẬP
+									</a>
+								</li>
+								<?php }?>
             </ul>
           </div>
         </div>

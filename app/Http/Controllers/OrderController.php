@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Tax;
 
 use Illuminate\Http\Request;
 
@@ -68,5 +69,17 @@ class OrderController extends Controller
         $order = OrderDetail::where('order_id', $id)->get();
 
         return view('supplier.order.orderDetail', compact('order'));
+    }
+
+    public function checkOut()
+    {
+        $mycart = session()->get('my_cart');
+        $tax = Tax::first();
+        return view('front.checkout.checkout', compact('mycart', 'tax'));
+    }
+
+    public function createOrder(Request $request)
+    {
+        dd($request->all());
     }
 }
