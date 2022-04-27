@@ -4,3 +4,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/styles/core.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/styles/icon-font.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/styles/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">

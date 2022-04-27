@@ -18,7 +18,7 @@ class SupplierController extends Controller
 
     public function create()
     {
-        $users = User::all();
+        $users = User::where('role', config('constants.role_supplier'))->get();
 
         return view('admin.supplier.create', compact('users'));
     }

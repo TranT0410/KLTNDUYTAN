@@ -1,105 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>LAHERA</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="LA HERA">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="css/main_styles.css">
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
-</head>
 
-<body>
-
-<div class="super_container">
-
-	<!-- Header -->
-
-	<header class="header trans_300">
-
-		<!-- Top Navigation -->
-
-		<div class="top_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">						
-					</div>
-					<div class="col-md-6 text-right">
-						<div class="top_nav_right">
-							<ul class="top_nav_menu">
-
-								<!-- Account -->
-								<?php if(auth()->user()){?>
-								<li class="language">
-									<a href="#">						
-										{{auth()->user()->name}}
-									</a>
-								</li>
-								<li class="language">
-									<a href="{{route('admin.logout')}}">						
-										Logout
-									</a>
-								</li>
-								<?php }else {?>
-								<li class="language">
-									<a href="{{route('admin.user.register')}}">						
-										ĐĂNG KÍ
-									</a>
-								</li>
-								<li class="account">
-									<a href="{{route('admin.user.login')}}">
-										ĐĂNG NHẬP
-									</a>
-								</li>
-								<?php }?>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-
-		<!-- Main Navigation -->
-
-		<div class="main_nav_container">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-right">
-						<div class="logo_container">
-							<a href="index.html">LA HERA</span></a>
-						</div>
-						<nav class="navbar">
-							<ul class="navbar_menu">
-								<input type="text" placeholder="Tìm kiếm" class="search">
-								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-							</ul>
-							<ul class="navbar_user">								
-								<li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-								<li class="checkout">
-									<a href="{{route('home.cart.list')}}">
-										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										<span id="checkout_items" class="checkout_items">2</span>
-									</a>
-								</li>
-							</ul>
-							<div class="hamburger_container">
-								<i class="fa fa-bars" aria-hidden="true"></i>
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</header>
-
+@extends('front.layout.master')
+@section('content')
 	<div class="fs_menu_overlay"></div>
 	<!-- Slider -->
 
@@ -173,14 +74,13 @@
 									<img src="{{Storage::url($product->image)}}" alt="">
 								</div>
 								<div class="favorite favorite_left"></div>
-								{{-- <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> --}}
 								<div class="product_info">
 									<h6 class="product_name"><a href="single.html">{{$product->name}}</a></h6>
 									<?php $price_product = number_format($product->price)?>
-									<div class="product_price">{{$price_product}}</div>
+									<div class="product_price">{{$price_product}}đ</div>
 								</div>
+								<div class="red_button add_to_cart_button" style="width:80%"><a href="{{route('home.cart.add',$product->id)}}">add to cart</a></div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="{{route('home.cart.add',$product->id)}}">add to cart</a></div>
 						</div>
 						@endforeach
 					</div>
@@ -326,52 +226,4 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer" style="border-top: 3px solid; margin-top: 50px;">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
-						<ul class="footer_nav">
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Contact us</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="footer_nav_container">
-						<div class="cr">©2022 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">LA HERA</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-</div>
-
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="js/custom.js"></script>
-</body>
-
-</html>
+@endsection

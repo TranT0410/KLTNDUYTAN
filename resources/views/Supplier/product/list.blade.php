@@ -62,18 +62,10 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="clearfix pd-30">
-                            <div class="pull-left">
-                                {{ $products->links() }}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 
-@push('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-@endpush
+

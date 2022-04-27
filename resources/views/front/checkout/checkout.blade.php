@@ -2,7 +2,8 @@
 
 @section('content')
 <section class="ftco-section">
-<form method="post" action="">
+<form method="POST" action="{{route('order.create')}}">
+  @csrf
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-5 ftco-animate">
@@ -12,14 +13,14 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="firstname">Tên tài khoản</label>
-                <input type="text" class="form-control" placeholder="" value="{{auth()->user()->name}}" readonly>
+                <input type="text" name="username" class="form-control" placeholder="" value="{{auth()->user()->name}}" readonly>
               </div>
             </div>
             <div class="w-100"></div>
             <div class="col-md-12">
               <div class="form-group">
                 <label for="lastname">Tên người nhận</label>
-                <input type="text" name="username" class="form-control" placeholder="">
+                <input type="text" name="receiver" class="form-control" placeholder="">
               </div>
             </div>
             <div class="w-100"></div>
@@ -37,16 +38,10 @@
                 <input type="text" name="phone" class="form-control" placeholder="">
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="emailaddress">Email</label>
-                <input type="text" name="email" class="form-control" placeholder="">
-              </div>
-            </div>
             <div class="col-md-12">
               <div class="form-group mt-4">
                 <label for="note">Ghi chú</label>
-                <textarea name="note" id="" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@
   
   @yield('content')
 
-  @include('admin.layout.js')
+  @include('admin.layout.scripts')
 
   @stack('scripts')
   

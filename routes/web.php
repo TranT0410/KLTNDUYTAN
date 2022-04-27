@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AccountController;
 
 use App\Models\Supplier;
 
@@ -151,6 +152,9 @@ Route::prefix('supplier')->group(function () {
 
         Route::get('orders-detail/{id}', [OrderController::class, 'orderDetail'])
             ->name('supplier.order.orders_detail');
+
+        Route::post('insert-order', [OrderController::class, 'createOrder'])
+            ->name('order.create');
     });
     Route::prefix('product')->group(function () {
         Route::get('list', [ProductController::class, 'index'])
@@ -224,4 +228,10 @@ Route::prefix('home')->group(function () {
 
     Route::get('checkout', [OrderController::class, 'checkout'])->middleware('admin.login')
         ->name('home.checkout');
+
+    Route::get('profile', [AccountController::class, 'index'])
+        ->name('home.profile');
+
+    Route::get('orders-confirm', [OrderController::class, 'userOrderNews'])
+        ->name('home.orders_confirm');
 });

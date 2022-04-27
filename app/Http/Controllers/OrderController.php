@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\PromotionDetail;
 use App\Models\Tax;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -80,6 +81,39 @@ class OrderController extends Controller
 
     public function createOrder(Request $request)
     {
-        dd($request->all());
+        $order = $request->all();
+        $tax = Tax::first();
+        $order['status'] = config('constants.order_status');
+        Order::create($order);
+        $data_order = Order::select('id')
+            ->orderByDesc('created_at')
+            ->limit(1)->first();
+
+        $mycart = session()->get('my_cart');
+
+        foreach ($mycart as $key => $row) {
+            $price = $row['price'] + ($row['price'] * ($tax['rate_tax'] / 100));
+            $data_promotion = PromotionDetail::select('rate')
+                ->Where('product_id', $key)
+                ->first();
+            if ($data_promotion != null) {
+                $data = ['quantity' => $row['quantity'], 'price' => $price, 'Promotion_rate' => $data_promotion['rate'], 'category_id' => $row['category_id'], 'product_id' => $key, 'order_id' => $data_order['id']];
+            } else {
+                $data = ['quantity' => $row['quantity'], 'price' => $price, 'Promotion_rate' => null, 'category_id' => $row['category_id'], 'product_id' => $key, 'order_id' => $data_order['id']];
+            }
+            OrderDetail::create($data);
+        }
+        $request->session()->forget('my_cart');
+        return redirect(route('home.cart.list'));
+    }
+
+    public function userOrderNews()
+    {
+        $user_orders = DB::table('order_details')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->where('status', 1)
+            ->get();
+        return view('front.order.orderConfirm', compact('user_orders'));
     }
 }

@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'quantity', 'image', 'price', 'category_id'
+        'name', 'quantity', 'image', 'price', 'category_id', 'supplier_id'
     ];
 
     public function promotionDetails()
@@ -24,7 +24,7 @@ class Product extends Model
 
     public function orderDetails()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(OrderDetail::class, 'name');
     }
 
     public function rates()
@@ -35,5 +35,10 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function suppliers()
+    {
+        return $this->belongsTo(Category::class, 'supplier_id');
     }
 }

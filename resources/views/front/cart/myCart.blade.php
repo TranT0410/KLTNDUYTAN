@@ -1,61 +1,6 @@
 @extends('front.layout.master')
 
 @section('content')
-<div class="main_nav_container">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-right">
-        <div class="logo_container">
-          <a href="{{route('home')}}">LA HERA</span></a>
-        </div>
-        <nav class="navbar">
-          <ul class="navbar_menu">
-            <input type="text" placeholder="Tìm kiếm" class="search">
-            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-          </ul>
-          <ul class="navbar_user">
-            <li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-            <li class="checkout">
-              <a href="cart.html">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                <span id="checkout_items" class="checkout_items">2</span>
-              </a>
-            </li>
-          </ul>
-          <div class="hamburger_container">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
-
-</header>
-
-<div class="fs_menu_overlay"></div>
-
-<div class="hamburger_menu">
-<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-<div class="hamburger_menu_content text-right">
-  <ul class="menu_top_nav">
-    <li class="menu_item"><a href="index.html">home</a></li>
-    <li class="menu_item has-children">
-      <a href="#">
-        My Account
-        <i class="fa fa-angle-down"></i>
-      </a>
-      <ul class="menu_selection">
-        <li><a href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-        <li><a href="signup.html"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
-      </ul>
-    </li>
-    <li class="menu_item"><a href="categories.html">shop</a></li>
-    <li class="menu_item"><a href="blog.html">blog</a></li>
-  </ul>
-</div>
-</div>
-
 <div class="hero-wrap hero-bread" style="background-image: url('{{asset('images/bg_01.jpg')}}');">
 <div class="overlay"></div>
 <div class="container">
@@ -76,7 +21,7 @@
     <div class="col-md-12 ftco-animate">
       <div class="cart-list">
         <table class="table">
-          <thead class="thead-primary">
+          <thead class="thead-primary" style="background: #dda89e;">
             <tr class="text-center">
               <!-- <th>&nbsp;</th> -->
               <th>Thao Tác</th>

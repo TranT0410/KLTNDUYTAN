@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Supplier;
 use App\Http\Requests\ProductRequest;
 
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(config('constants.paginate_10'));
+        $products = Product::where('supplier_id', auth()->user()->suppliers->id)->get();
 
         return view('supplier.product.list', compact('products'));
     }
@@ -31,6 +32,7 @@ class ProductController extends Controller
             $file = $request->file('image');
             $data['image'] = $file->store('images/product', 'images');
         }
+        $data['supplier_id'] = auth()->user()->suppliers->id;
         Product::create($data);
 
         return redirect(route('supplier.product.list'))->with('status', 'Inserts product successfully!');

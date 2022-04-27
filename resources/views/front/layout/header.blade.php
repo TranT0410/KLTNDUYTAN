@@ -42,3 +42,35 @@
       </div>
     </div>
   </div>
+
+	<div class="main_nav_container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-right">
+					<div class="logo_container">
+						<a href="index.html">LA HERA</span></a>
+					</div>
+					<nav class="navbar">
+						<ul class="navbar_menu">
+							<input type="text" placeholder="Tìm kiếm" class="search">
+							<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+						</ul>
+						<ul class="navbar_user">								
+							<li><a href="{{route('home.profile')}}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+							<li class="checkout">
+								<a href="{{route('home.cart.list')}}">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+									<span id="checkout_items" class="checkout_items">2</span>
+								</a>
+							</li>
+						</ul>
+						<div class="hamburger_container">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
