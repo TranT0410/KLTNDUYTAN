@@ -57,11 +57,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="clearfix pd-30">
-                            <div class="pull-left">
-                                {{ $orders->links() }}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

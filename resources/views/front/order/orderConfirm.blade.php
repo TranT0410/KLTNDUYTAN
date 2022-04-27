@@ -8,7 +8,7 @@
                 <i class="fa fa-user-circle"></i>
             </a>
             <div class="_2uLDqN">
-                <div class="_2lG70n">tranvana</div>
+                <div class="_2lG70n">{{auth()->user()->name}}</div>
                 <div>
                     <a class="_27BCO5" href="./account.html">
 
@@ -68,19 +68,19 @@
     <div class="_3D9BVC">
         <div class="_2mSi0S">
             <div class="ZS1kj6">
-                <a class="_2sowby" href="./history2.html">
+                <a class="_2sowby" href="{{route('home.orders_all')}}">
                     <span class="_2pSH8O">Tất cả</span>
                 </a>
-                <a class="_2sowby  _23VQQX" href="./history.html">
+                <a class="_2sowby _23VQQX" href="{{route('home.orders_confirm')}}">
                     <span class="_2pSH8O">Chờ xác nhận</span>
                 </a>
-                <a class="_2sowby" href="./history3.html">
+                <a class="_2sowby" href="{{route('home.orders_ship')}}">
                     <span class="_2pSH8O">Đang giao</span>
                 </a>
-                <a class="_2sowby" href="./history4.html">
+                <a class="_2sowby" href="{{route('home.orders_finish')}}">
                     <span class="_2pSH8O">Đã giao</span>
                 </a>
-                <a class="_2sowby" href="./history5.html">
+                <a class="_2sowby" href="{{route('home.orders_block')}}">
                     <span class="_2pSH8O">Đã hủy</span>
                 </a>
             </div>
@@ -91,7 +91,12 @@
                         <div class="GuWdvd">
                             <div class="WqnWb-">
                                 <div class="_1DPpu5">
-                                    <div class="_1CIbL0">myngmynoder</div>
+                                        @foreach($products as $product)
+                                            @if($product->id === $row->product_id)
+                                            <div class="_1CIbL0">{{$product->suppliers->name}}</div>
+                                            @endif
+                                        @endforeach  
+                                    
                                     <div class="_1q53YG">
                                         <button class="stardust-button stardust-button--primary">
                                             <i class="fa fa-comments-o"></i>
@@ -133,7 +138,12 @@
                                                     <div class="_1cxKtp">
                                                         <div>
                                                             <div class="_1xHDVY">
-                                                                <span class="_30COVM">{{$row->product_id}}</span>
+                                                                @foreach($products as $product)
+                                                                @if($product->id === $row->product_id)
+                                                                <span class="_30COVM">{{$product->name}}</span>
+                                                                @endif
+                                                                @endforeach    
+                                            
                                                             </div>
                                                         </div>
                                                         <div>
@@ -174,9 +184,7 @@
                     <div class="_1Qn42s">
                         <div class="_1lM63-">
                             <span class="_2xFj47">
-                                Sản phẩm sẽ gửi đi trước
                                 <div class="lahera-drawer">
-                                    <u class="_1_feWc">25-05-202</u>
                                 </div>
                             </span>
                         </div>

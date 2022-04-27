@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\PromotionDetail;
 use App\Models\Tax;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,14 @@ class OrderController extends Controller
 {
     public function ordersNew()
     {
-        $orders = Order::where('status', 1)->paginate(config('constants.paginate_10'));
-
+        $orders = DB::table('orders')
+            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('suppliers', 'suppliers.id', '=', 'products.supplier_id')
+            ->where('suppliers.id', auth()->user()->suppliers->id)
+            ->where('orders.status', 1)
+            ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->get();
         return view('supplier.order.listOrderNew', compact('orders'));
     }
 
@@ -29,14 +36,28 @@ class OrderController extends Controller
 
     public function ordersShiping()
     {
-        $orders = Order::where('status', 2)->paginate(config('constants.paginate_10'));
+        $orders = DB::table('orders')
+            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('suppliers', 'suppliers.id', '=', 'products.supplier_id')
+            ->where('suppliers.id', auth()->user()->suppliers->id)
+            ->where('orders.status', 2)
+            ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->get();
 
         return view('supplier.order.listOrderShipping', compact('orders'));
     }
 
     public function ordersShipped()
     {
-        $orders = Order::where('status', 3)->paginate(config('constants.paginate_10'));
+        $orders = DB::table('orders')
+            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('suppliers', 'suppliers.id', '=', 'products.supplier_id')
+            ->where('suppliers.id', auth()->user()->suppliers->id)
+            ->where('orders.status', 3)
+            ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->get();
 
         return view('supplier.order.listOrderShiped', compact('orders'));
     }
@@ -60,7 +81,14 @@ class OrderController extends Controller
 
     public function listOrderBlock()
     {
-        $orders = Order::where('status', 4)->paginate(config('constants.paginate_10'));
+        $orders = DB::table('orders')
+            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('suppliers', 'suppliers.id', '=', 'products.supplier_id')
+            ->where('suppliers.id', auth()->user()->suppliers->id)
+            ->where('orders.status', 4)
+            ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->get();
 
         return view('supplier.order.listOrderBlock', compact('orders'));
     }
@@ -109,11 +137,53 @@ class OrderController extends Controller
 
     public function userOrderNews()
     {
+        $products = Product::all();
         $user_orders = DB::table('order_details')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
             ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
             ->where('status', 1)
             ->get();
-        return view('front.order.orderConfirm', compact('user_orders'));
+        return view('front.order.orderConfirm', compact('user_orders', 'products'));
+    }
+
+    public function allOrder()
+    {
+        $products = Product::all();
+        $user_orders = DB::table('order_details')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->get();
+        return view('front.order.orderAll', compact('user_orders', 'products'));
+    }
+
+    public function orderShip()
+    {
+        $products = Product::all();
+        $user_orders = DB::table('order_details')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->where('status', 2)
+            ->get();
+        return view('front.order.orderShip', compact('user_orders', 'products'));
+    }
+    public function orderFinish()
+    {
+        $products = Product::all();
+        $user_orders = DB::table('order_details')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->where('status', 3)
+            ->get();
+        return view('front.order.orderFinish', compact('user_orders', 'products'));
+    }
+    public function orderBlock()
+    {
+        $products = Product::all();
+        $user_orders = DB::table('order_details')
+            ->join('orders', 'orders.id', '=', 'order_details.order_id')
+            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->where('status', 4)
+            ->get();
+        return view('front.order.orderBlock', compact('user_orders', 'products'));
     }
 }

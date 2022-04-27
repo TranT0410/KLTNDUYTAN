@@ -234,4 +234,16 @@ Route::prefix('home')->group(function () {
 
     Route::get('orders-confirm', [OrderController::class, 'userOrderNews'])
         ->name('home.orders_confirm');
+
+    Route::get('orders-all', [OrderController::class, 'allOrder'])
+        ->name('home.orders_all');
+
+    Route::get('orders-ship', [OrderController::class, 'orderShip'])
+        ->name('home.orders_ship');
+
+    Route::get('orders-finish', [OrderController::class, 'orderFinish'])
+        ->name('home.orders_finish');
+
+    Route::get('orders-block', [OrderController::class, 'orderBlock'])
+        ->name('home.orders_block');
 });

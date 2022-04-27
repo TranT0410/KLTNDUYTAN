@@ -19,6 +19,7 @@
                                 <th>Quanlity</th>
                                 <th>Price</th>
                                 <th>Promotion</th>
+                                <th>Total</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,9 +31,12 @@
                                     <td class="an"><img src="{{ Storage::url($row->products->image) }}"
                                                         style="width:120px;height:120px;overflow:hidden">
                                     </td>
-                                    <td class="an">{{ $row->quanlity }}</td>
-                                    <td class="an">{{ $row->price }}</td>
-                                    <td class="an">{{ $row->Promotion_rate }}</td>
+                                    <td class="an">{{ $row->quantity }}</td>
+                                    <td class="an">{{ number_format($row->price,'0',',','.') }}đ</td>
+                                    <td class="an">{{ $row->Promotion_rate == null ? 0 : $row->Promotion_rate }}%</td>
+                                    <?php $subtotal = $row->quantity * $row->price?>
+                                    <?php $total = $subtotal - ($subtotal*($row->Promotion_rate)/100)?>
+                                    <td class="an">{{number_format($total,'0',',','.')}}đ</td>
                                 </tr>
                             @endforeach
                             </tbody>
