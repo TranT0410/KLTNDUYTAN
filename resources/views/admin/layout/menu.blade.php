@@ -164,7 +164,7 @@
                     <span class="micon dw dw-clipboard"></span><span class="mtext">Quản Lý Đánh Giá</span>
                 </a>
                 <ul class="submenu">
-                    <li><a href="#">Danh Sách Đánh Giá</a></li>
+                    <li><a href="{{route('admin.rate.list')}}">Danh Sách Đánh Giá</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -181,17 +181,8 @@
                       <span class="micon dw dw-school"></span><span class="mtext">Quản Lý Tin Tức</span>
                   </a>
                   <ul class="submenu">
-                      <li><a href="#">Danh Sách Tin Tức</a></li>
-                  </ul>
-              </li>
-            @endcan
-            @can('view-banner')
-              <li class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle">
-                      <span class="micon dw dw-list"></span><span class="mtext">Quản Lý Banner</span>
-                  </a>
-                  <ul class="submenu">
-                          <li><a href="#">Danh Sách Banner</a></li>
+                      <li><a href="{{route('admin.news.list')}}">Danh Sách Tin Tức</a></li>
+                      <li><a href="{{route('admin.news.create')}}">Thêm Tin Tức</a></li>
                   </ul>
               </li>
             @endcan

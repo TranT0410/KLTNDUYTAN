@@ -38,9 +38,17 @@ class UserController extends Controller
         return view('admin.user.view', compact('user'));
     }
 
-    public function update(UserRequest $request, $id)
+    public function update($id)
     {
         $user = User::find($id);
         return view('admin.user.update', compact('user'));
+    }
+
+    public function edit($id, Request $request)
+    {
+        $user = User::find($id);
+        $data = $request->all();
+        $user->update($data);
+        return redirect(route('admin.user.list'))->with('status', 'Update user successfully');
     }
 }

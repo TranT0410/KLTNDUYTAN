@@ -11,6 +11,10 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\RateController;
+use App\Http\Controllers\NewsController;
+
+
 
 use App\Models\Supplier;
 
@@ -67,6 +71,33 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
         Route::get('view/{id}', [CategoryController::class, 'view'])
             ->name('admin.category.view');
     });
+    Route::prefix('rate')->group(function () {
+        Route::get('list', [RateController::class, 'index'])
+            ->name('admin.rate.list');
+
+        Route::get('view/{id}', [RateController::class, 'view'])
+            ->name('admin.rate.view');
+
+        Route::get('delete/{id}', [RateController::class, 'delete'])
+            ->name('admin.rate.delete');
+    });
+    Route::prefix('news')->group(function () {
+        Route::get('list', [NewsController::class, 'index'])
+            ->name('admin.news.list');
+
+        Route::get('create', [NewsController::class, 'create'])
+            ->name('admin.news.create');
+
+        Route::post('create', [NewsController::class, 'store']);
+
+        Route::get('update/{id}', [NewsController::class, 'update'])
+            ->name('admin.news.update');
+
+        Route::post('update/{id}', [NewsController::class, 'edit']);
+
+        Route::get('delete/{id}', [NewsController::class, 'delete'])
+            ->name('admin.news.delete');
+    });
     Route::prefix('tax')->group(function () {
         Route::get('list', [TaxController::class, 'index'])
             ->name('admin.tax.list');
@@ -115,7 +146,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
         Route::post('create', [UserController::class, 'store']);
 
         Route::get('update/{id}', [UserController::class, 'update'])
-            ->name('admin.user.update');
+            ->name('admin.user.edit');
 
         Route::post('update/{id}', [UserController::class, 'edit']);
 

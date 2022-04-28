@@ -11,11 +11,11 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Product List</h4>
+                        <h4 class="text-blue h4">News List</h4>
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
-                            <a href="{{route('supplier.product.create')}}" class="btn btn-success">Add</a>
+                            <a href="{{route('admin.news.create')}}" class="btn btn-success">Add</a>
                         </div>
                     </div>
                     <div class="pb-20">
@@ -23,24 +23,22 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Quantity</th>
+                                <th>Title</th>
+                                <th>Content</th>
                                 <th>Image</th>
-                                <th>Price</th>
-                                <th>Category</th>
+                                <th>User name</th>
                                 <th>Create at</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($products as $row)
+                            @foreach ($news as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{$row->quantity}}</td>
+                                    <td class="an">{{ $row->title }}</td>
+                                    <td class="an">{{$row->content}}</td>
                                     <td><img src="{{Storage::url($row->image)}}" width="200px" height="200px"></td>
-                                    <td>{{$row->price}}</td>
-                                    <td>{{$row->categories->name}}</td>
+                                    <td>{{$row->users->name}}</td>
                                     <td>{{ $row->created_at }}</td>
                                     <td>
                                         <div class="dropdown">
@@ -50,10 +48,10 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                     <a class="dropdown-item"
-                                                       href="{{route('supplier.product.edit',$row->id)}}"><i
+                                                       href="{{route('admin.news.update',$row->id)}}"><i
                                                             class="dw dw-edit2"></i> Edit</a>
                                                         <a class="dropdown-item"
-                                                           href="{{route('supplier.product.delete',$row->id)}}"><i
+                                                           href="{{route('admin.news.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
                                                             Delete</a>
                                                 </div>

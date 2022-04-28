@@ -39,7 +39,13 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->address }}</td>
                                     <td>{{ $user->phone }}</td>
-                                    <td>{{ $user->role === config('constants.admin') ? 'Admin' : 'User' }}</td>
+                                    <?php if($user->role === config('constants.role_admin')){?>
+                                                <td>Admin</td> 
+                                       <?php    }else if($user->role === config('constants.role_supplier')){ ?>
+                                                <td>Supplier</td>
+                                    <?php }else{ ?>
+                                                <td>User</td>
+                                    <?php } ?>
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -51,7 +57,7 @@
                                                    href="{{ route('admin.user.show', $user->id) }}"><i
                                                         class="dw dw-eye"></i> View</a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.user.update', $user->id) }}"><i
+                                                   href="{{ route('admin.user.edit', $user->id) }}"><i
                                                         class="dw dw-edit2"></i> Edit</a>
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.delete', $user->id) }}"><i

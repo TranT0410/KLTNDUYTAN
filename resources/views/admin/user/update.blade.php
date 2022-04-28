@@ -10,14 +10,13 @@
                             <h4 class="text-blue h4">User Edit Form</h4>
                         </div>
                     </div>
-                    <form action="{{ route('admin.user.edit', $user->id) }}" method="post">
+                    <form action="{{ route('admin.user.edit', $user->id) }}" method="POST">
                         @csrf
-                        @method('put')
                         <div class="form-group row">
                             <label class="col-sm-12 col-md-2 col-form-label">Name <span
                                     style="color: red;">*</span></label>
                             <div class="col-sm-12 col-md-10">
-                                <input class="form-control" type="text" placeholder="Name" name="name"
+                                <input class="form-control" type="text"  name="name"
                                        value="{{ $user->name }}">
                                 @error('name')
                                 <span style="color: red;">{{ $message }}</span>
@@ -59,11 +58,14 @@
                             <label class="col-sm-12 col-md-2 col-form-label">Select role</label>
                             <div class="col-sm-12 col-md-10">
                                 <select class="custom-select col-12" name="role">
-                                    <option value="0" {{ $user->role === config('constants.user') ? 'selected' : '' }}>
-                                        User
-                                    </option>
-                                    <option value="1" {{ $user->role === config('constants.admin') ? 'selected' : '' }}>
+                                    <option value="0" {{ $user->role === config('constants.role_admin') ? 'selected' : '' }}>
                                         Admin
+                                    </option>
+                                    <option value="1" {{ $user->role === config('constants.role_supplier') ? 'selected' : '' }}>
+                                        Supplier
+                                    </option>
+                                    <option value="2" {{ $user->role === config('constants.role_customer') ? 'selected' : '' }}>
+                                        User
                                     </option>
                                 </select>
                             </div>

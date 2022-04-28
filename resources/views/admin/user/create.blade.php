@@ -44,6 +44,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Confirm Password <span style="color: red;">*</span></label>
+                            <div class="col-sm-12 col-md-10">
+                                <input class="form-control" placeholder="Password" type="password" name="confirmPassword">
+                                @error('confirmPassword')
+                                <span style="color: red;">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-12 col-md-2 col-form-label">Address</label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Address" type="text" name="address"

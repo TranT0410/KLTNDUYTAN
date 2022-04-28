@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:categories|max:255',
-            'image' => 'image'
+            'image' => 'image|required'
         ];
     }
 
@@ -36,7 +36,8 @@ class CategoryRequest extends FormRequest
             'name.required' => 'Tên danh mục không được để trống!',
             'name.unique' => 'Tên danh mục đã tồn tại!',
             'name.max' => 'Tên danh mục không được quá :max ký tự!',
-            'image.image' => 'Image phải là hình ảnh',
+            'image.image' => 'Hình ảnh phải là định dạng hình ảnh',
+            'image.required' => 'Hình ảnh không được để trống!',
         ];
     }
 }
