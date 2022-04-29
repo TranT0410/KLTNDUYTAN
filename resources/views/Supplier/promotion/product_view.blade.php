@@ -37,7 +37,9 @@
                         <div class="col-sm-12 col-md-10">
                             <select class="custom-select col-12" name="product_id">
                               @foreach($products as $product)
+                              @if($product->rate == null)
                                 <option value="{{$product->id}}">{{$product->name}}</option>
+                                @endif
                               @endforeach
                             </select>
                         </div>

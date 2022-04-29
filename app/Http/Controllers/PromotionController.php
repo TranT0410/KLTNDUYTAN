@@ -70,7 +70,9 @@ class PromotionController extends Controller
     public function formProductPromotion($id)
     {
         $promotion = Promotion::find($id);
-        $products = Product::get();
+        $products = Product::select('products.*', 'promotion_detail.rate')
+            ->leftJoin('promotion_detail', 'products.id', '=', 'promotion_detail.product_id')
+            ->get();
 
         return view('supplier.promotion.product_view', compact('promotion', 'products'));
     }
