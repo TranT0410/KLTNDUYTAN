@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->float('rate');
             $table->string('description');
-            $table->integer('quantity');
             $table->timestamps();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('promotion_id');

@@ -30,7 +30,7 @@ class PromotionController extends Controller
         $promotion['status'] = config('constants.status');
         Promotion::create($promotion);
 
-        return redirect(route('supplier.promotion.list'))->with('status', 'Insert promotion successfully');
+        return redirect(route('supplier.promotion.list'))->with('status', 'Thêm chương trình khuyến mãi thành công');
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class PromotionController extends Controller
         $data = $request->all();
         $promotion->update($data);
 
-        return redirect(route('supplier.promotion.list'))->with('status', 'Update promotion successfully');
+        return redirect(route('supplier.promotion.list'))->with('status', 'Cập nhật chương trình khuyến mãi thành công');
     }
 
     public function delete($id)
@@ -54,14 +54,17 @@ class PromotionController extends Controller
         $promotion = Promotion::find($id);
         $promotion->delete();
 
-        return redirect(route('supplier.promotion.list'))->with('status', 'Delete promotion successfully');
+        return redirect(route('supplier.promotion.list'))->with('status', 'Xóa chương trình khuyến mãi thành công');
     }
 
     public function promotionDetail($id)
     {
         $promotion = PromotionDetail::where('promotion_id', $id)->get();
-
-        return view('supplier.promotion.view', compact('promotion'));
+        if (!empty($promotion)) {
+            return view('supplier.promotion.view', compact('promotion'));
+        } else {
+            return redirect(route('supplier.promotion.list'))->with('status', 'Mã khuyến mãi chưa có sản phẩm nào để hiển thị');
+        }
     }
 
     public function formProductPromotion($id)
@@ -77,7 +80,7 @@ class PromotionController extends Controller
         $data = $request->all();
         PromotionDetail::create($data);
 
-        return redirect(route('supplier.promotion.list'))->with('status', 'Insert successfully');
+        return redirect(route('supplier.promotion.list'))->with('status', 'Thêm sản phẩm khuyến mãi thành công');
     }
 
     public function deleteProduct($id)
@@ -85,7 +88,7 @@ class PromotionController extends Controller
         $product = PromotionDetail::find($id);
         $product->delete();
 
-        return redirect(route('supplier.promotion.list'))->with('status', 'Delete successfully');
+        return redirect(route('supplier.promotion.list'))->with('status', 'Xóa sản phẩm khuyến mãi thành công');
     }
 
     public function formUpdateProduct($id)
@@ -102,6 +105,6 @@ class PromotionController extends Controller
         $data = $request->all();
         $promotion->update($data);
 
-        return redirect(route('supplier.promotion.list'))->with('status', 'Update successfully');
+        return redirect(route('supplier.promotion.list'))->with('status', 'Cập nhật sản phẩm khuyến mãi thành công');
     }
 }

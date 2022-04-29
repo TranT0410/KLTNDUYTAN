@@ -32,16 +32,6 @@
                             @enderror
                         </div>
                     </div>
-                      <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Quantity<span
-                                style="color:red">*</span></label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="quantity" type="number" min="0" >
-                            @error('quantity')
-                            <span style="color:red" ;>{{ $message }}<span>
-                            @enderror
-                        </div>
-                    </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Select Products</label>
                         <div class="col-sm-12 col-md-10">

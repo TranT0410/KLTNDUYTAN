@@ -9,7 +9,7 @@ class PromotionDetail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'promotion_id', 'product_id', 'rate', 'quantity', 'description'
+        'promotion_id', 'product_id', 'rate', 'description'
     ];
     protected $table = 'promotion_detail';
     public function promotions()

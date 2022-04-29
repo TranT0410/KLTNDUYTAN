@@ -30,3 +30,4 @@
 	<script src="{{asset('js/main.js')}}"></script>
 	<script src="{{asset('js/cart.js')}}"></script>
 	<script src="{{asset('js/categories_custom.js')}}"></script>
+	<script src="{{asset('js/custom.js')}}"></script>

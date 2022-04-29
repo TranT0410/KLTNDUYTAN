@@ -70,8 +70,10 @@ class ProductController extends Controller
 
     public function productDetail($id)
     {
-        $product = Product::find($id);
-
+        $product = Product::select('products.*', 'promotion_detail.rate', 'promotion_detail.quantity', 'promotion_detail.product_id')
+            ->leftJoin('promotion_detail', 'products.id', '=', 'promotion_detail.product_id')
+            ->where('products.id', $id)
+            ->first();
         return view('front.product.productDetail', compact('product'));
     }
 }

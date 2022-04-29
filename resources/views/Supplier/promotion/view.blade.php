@@ -31,7 +31,6 @@
                                 <th>Product</th>
                                 <th>Rate</th>
                                 <th>Description</th>
-                                <th>Quantity</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                             </thead>
@@ -43,7 +42,6 @@
                                     <td>{{$row->products->name}}</td>
                                     <td>{{$row->rate}}%</td>
                                     <td>{{$row->description}}</td>
-                                    <td>{{$row->quantity}}</td>
                                     <td>
                                         <div class="dropdown">
                                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"

@@ -99,8 +99,13 @@
 						<!-- <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
 							<span class="ti-truck"></span><span>free delivery</span>
 						</div> -->
-						<?php $price = number_format($product->price)?>
-						<div class="product_price">{{$price}} VND</div>
+						@if($product->rate == null)
+						<?php $price = number_format($product->price,'0',',','.')?>
+						<div class="product_price">{{$price}}đ</div>
+						@else
+						<?php $price =$product->price -($product->price*($product->rate/100)) ?>
+						<div class="product_price">{{number_format($price,'0',',','.')}}đ</div>
+						@endif
 						<ul class="star_rating">
 							<li><i class="fa fa-star" aria-hidden="true"></i></li>
 							<li><i class="fa fa-star" aria-hidden="true"></i></li>

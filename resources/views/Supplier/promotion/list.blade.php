@@ -15,6 +15,7 @@
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
+                            <a href="{{route('supplier.promotion.create')}}" class="btn btn-success">Add</a>
                         </div>
                     </div>
                     <div class="pb-20">
