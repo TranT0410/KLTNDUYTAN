@@ -60,7 +60,15 @@
 							<li class="checkout">
 								<a href="{{route('home.cart.list')}}">
 									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-									<span id="checkout_items" class="checkout_items">2</span>
+									<?php
+									$cart = session()->get('my_cart');
+											if ($cart != null) {
+													$count = count($cart);
+											} else {
+													$count = 0;
+											}
+									 ?>
+									<span id="checkout_items" class="checkout_items">{{$count}}</span>
 								</a>
 							</li>
 						</ul>

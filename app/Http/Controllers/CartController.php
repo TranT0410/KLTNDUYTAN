@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -10,16 +11,19 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $mycart = session('my_cart');
-        return view('front.cart.myCart', compact('mycart'));
+        $products = Product::all();
+        $supplier = Supplier::all();
+        return view('front.cart.myCart', compact('mycart', 'supplier', 'products'));
         // $request->session()->flush();
     }
 
     public function addCart($id)
     {
-        $product = Product::findOrFail($id);
-
+        $product = Product::select('products.*', 'promotion_detail.rate', 'promotion_detail.product_id')
+            ->leftJoin('promotion_detail', 'products.id', '=', 'promotion_detail.product_id')
+            ->where('products.id', $id)
+            ->first();
         $cart = session()->get('my_cart', []);
-
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
@@ -30,10 +34,12 @@ class CartController extends Controller
                 "price" => $product->price,
                 "image" => $product->image,
                 'category_id' => $product->category_id,
+                'supplier_id' => $product->supplier_id,
+                'rate' => $product->rate
             ];
         }
         session()->put('my_cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Sản phẩm được thêm vào giỏ hàng thành công!');
     }
 
     public function updateCart(Request $request)
@@ -48,7 +54,7 @@ class CartController extends Controller
             }
         }
         session()->put('my_cart', $cart);
-        return redirect()->back()->with('success', 'Update added to cart successfully!');
+        return redirect()->back()->with('success', 'Cập nhật giỏ hàng thành công!');
     }
 
     public function deleteCart(Request $request)

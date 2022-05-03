@@ -95,7 +95,13 @@ class OrderController extends Controller
 
     public function orderDetail($id)
     {
-        $order = OrderDetail::where('order_id', $id)->get();
+        $supplier_id = auth()->user()->suppliers->id;
+        $order = OrderDetail::select('order_details.*')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
+            ->where('order_details.order_id', $id)
+            ->where('suppliers.id', $supplier_id)
+            ->get();
 
         return view('supplier.order.orderDetail', compact('order'));
     }
@@ -130,9 +136,22 @@ class OrderController extends Controller
                 $data = ['quantity' => $row['quantity'], 'price' => $price, 'Promotion_rate' => null, 'category_id' => $row['category_id'], 'product_id' => $key, 'order_id' => $data_order['id']];
             }
             OrderDetail::create($data);
+            $products = Product::all();
+            foreach ($products as $id_product => $row_product) {
+                if ($key === $id_product) {
+                    $update = Product::find($id_product);
+                    $update['quantity'] = $update['quantity'] - $row['quantity'];
+                    $update->update();
+                }
+            }
         }
-        $request->session()->forget('my_cart');
-        return redirect(route('home.cart.list'));
+        if ($order['optradio'] == 0) {
+            $request->session()->forget('my_cart');
+            return redirect(route('home.cart.list'));
+        }
+        if ($order['optradio'] == 1) {
+            return redirect(route('front.payment'));
+        }
     }
 
     public function userOrderNews()

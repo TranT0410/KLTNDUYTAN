@@ -8,11 +8,6 @@
 		<div class="container fill_height">
 			<div class="row align-items-center fill_height">
 				<div class="col">
-					<!-- <div class="main_slider_content">
-						<h6>Spring / Summer Collection 2017</h6>
-						<h1>Get up to 30% Off New Arrivals</h1>
-						<div class="red_button shop_now_button"><a href="#">shop now</a></div>
-					</div> -->
 				</div>
 			</div>
 		</div>
@@ -23,11 +18,11 @@
 	<div class="banner">
 		<div class="container">
 			<div class="row">
-				@foreach($categories as $category)
+				@foreach($categories_random as $category)
 				<div class="col-md-4">
 					<div class="banner_item align-items-center" style="background-image:url({{Storage::url($category->image)}})">
 						<div class="banner_category">
-							<a href="categories.html">{{$category->name}}</a>
+							<a href="{{route('home',$category->id)}}">{{$category->name}}</a>
 						</div>
 					</div>
 				</div>
@@ -43,7 +38,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title new_arrivals_title">
-						<h2>New Arrivals</h2>
+						<h2>Danh Mục Sản Phẩm</h2>
 					</div>
 				</div>
 			</div>
@@ -51,12 +46,10 @@
 				<div class="col text-center">
 					<div class="new_arrivals_sorting">
 						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">Nhẫn</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">Hoa Tai</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">Dây chuyền</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">Đồng Hồ</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">Trang sức cưới</li>
+							<a href="{{route('home')}}"><li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter="*">all</li></a>
+							@foreach($categories as $row_category)
+							<a href="{{route('home',$row_category->id)}}"><li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">{{$row_category->name}}</li></a>
+							@endforeach
 						</ul>
 					</div>
 				</div>
@@ -81,7 +74,7 @@
 									<?php $price_product = number_format($product->price)?>
 									<div class="product_price">{{$price_product}}đ</div>
 								</div>
-								<div class="red_button add_to_cart_button" style="width:80%"><a href="{{route('home.cart.add',$product->id)}}">add to cart</a></div>
+								<div class="red_button add_to_cart_button" style="width:80%"><a href="{{route('home.cart.add',$product->id)}}">Thêm Vào Giỏ</a></div>
 							</div>
 						</div>
 						@endif
@@ -140,7 +133,7 @@
 		<div class="row">
 			<div class="col text-center">
 				<div class="section_title new_arrivals_title">
-					<h2>Best Sellers</h2>
+					<h2>Sản Phẩm Khuyến Mãi</h2>
 				</div>
 			</div>
 		</div>
@@ -166,7 +159,7 @@
 										<span>{{$row->rate}}%</span></div>
 									<div class="product_info">
 										<h6 class="product_name"><a href="{{route('home.product.detail',$row->product_id)}}">{{$row->name}}</a></h6>
-										<div class="product_price">{{($row->price - ($row->price*($row->rate)/100))}}đ<span>{{number_format($row->price,'0',',','.')}}đ</span></div>
+										<div class="product_price">{{number_format($row->price - ($row->price*($row->rate)/100),'0',',','.')}}đ<span>{{number_format($row->price,'0',',','.')}}đ</span></div>
 									</div>
 								</div>
 							</div>
@@ -200,7 +193,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title">
-						<h2>Latest Blogs</h2>
+						<h2>Blog Tin Tức</h2>
 					</div>
 				</div>
 			</div>
@@ -212,7 +205,7 @@
 						<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
 							<h4 class="blog_title">{{$row->title}}</h4>
 							<span class="blog_meta">by {{$row->users->name}} | {{$row->created_at}}</span>
-							<a class="blog_more" href="#">Read more</a>
+							<a class="blog_more" href="{{route('home.news.detail',$row->id)}}">Read more</a>
 						</div>
 					</div>
 				</div>

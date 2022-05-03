@@ -48,6 +48,6 @@ class AuthController extends Controller
         $data['password'] = Hash::make($request->password);
         User::create($data);
 
-        return redirect(route('admin.user.login'))->with('Create Account Successfull');
+        return redirect(route('admin.user.login'))->with('Đăng kí tài khoản thành công');
     }
 }

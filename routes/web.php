@@ -13,6 +13,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PaymentController;
+
 
 
 
@@ -238,12 +240,14 @@ Route::prefix('supplier')->group(function () {
         Route::post('update-product/{id}', [PromotionController::class, 'updateProduct']);
     });
 });
-Route::get('home', [HomeController::class, 'index'])
+Route::get('index/{id?}', [HomeController::class, 'index'])
     ->name('home');
 
 Route::prefix('home')->group(function () {
-    Route::get('product-detail/{id?}', [ProductController::class, 'productDetail'])
+    Route::get('product-detail/{id}', [ProductController::class, 'productDetail'])
         ->name('home.product.detail');
+
+    Route::post('product-detail/{id}', [ProductController::class, 'rate']);
 
     Route::get('my-cart', [CartController::class, 'index'])
         ->name('home.cart.list');
@@ -277,4 +281,15 @@ Route::prefix('home')->group(function () {
 
     Route::get('orders-block', [OrderController::class, 'orderBlock'])
         ->name('home.orders_block');
+
+    Route::get('payment', [PaymentController::class, 'index'])
+        ->name('front.payment');
+    Route::post('payment', [PaymentController::class, 'payment'])
+        ->name('create.payment');
+
+    Route::get('payment-success', [PaymentController::class, 'success'])
+        ->name('create.payment.success');
+
+    Route::get('news-detail/{id}', [NewsController::class, 'newsDetail'])
+        ->name('home.news.detail');
 });

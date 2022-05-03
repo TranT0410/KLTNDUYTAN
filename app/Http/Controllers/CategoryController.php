@@ -51,7 +51,7 @@ class CategoryController extends Controller
         }
         $category->update($data);
 
-        return redirect(route('admin.category.list'))->with('status', 'Update category successfully!');
+        return redirect(route('admin.category.list'))->with('status', 'Cập nhật danh mục thành công!');
     }
 
     public function delete($id)
@@ -59,7 +59,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        return redirect(route('admin.category.list'))->with('status', 'Delete category successfully!');
+        return redirect(route('admin.category.list'))->with('status', 'Xóa danh mục thành công!');
     }
 
     public function view($id)

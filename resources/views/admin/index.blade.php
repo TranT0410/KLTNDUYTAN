@@ -10,10 +10,10 @@
                     </div>
                     <div class="col-md-8">
                         <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                            Welcome
+                            Chào Mừng
                             {{-- <div class="weight-600 font-30 text-blue">{{ auth()->user()->name }}</div> --}}
                         </h4>
-                        <p class="font-18 max-width-600">This is the admin dashboard page</p>
+                        <p class="font-18 max-width-600">Bạn đã đến với trang quản trị</p>
                     </div>
                 </div>
             </div>

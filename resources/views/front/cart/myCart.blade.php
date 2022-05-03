@@ -27,8 +27,10 @@
               <th>Thao Tác</th>
               <th>Sản phẩm</th>
               <th>Tên sản phẩm</th>
+              <th>Nhà Cung Cấp</th>
               <th>Đơn giá</th>
               <th>Số lượng</th>
+              <th>Khuyến mãi</th>
               <th>Tất cả</th>
             </tr>
           </thead>
@@ -40,22 +42,37 @@
               <td class="product-remove"  data-id="{{$row['id']}}" route="{{route('home.cart.delete')}}">X</td>
 
               <td class="image-prod">
-                <div class="img" style="background-image:url(images/product-3.jpg);"></div>
+                <div class="img" style="background-image:url({{Storage::url($row['image'])}});"></div>
               </td>
 
               <td class="product-name">
                 <h3>{{$row['name']}}</h3>
               </td>
-
+              <td class="product-name">
+                @foreach($supplier as $name)
+                @if($name->id === $row['supplier_id'])
+                <h3>{{$name->name}}</h3>
+                @endif
+                @endforeach
+              </td>
               <td class="price">{{number_format($row['price'],'0',',','.')}}đ</td>
-
               <td class="quantity">
                 <div class="input-group mb-3">
+                  @foreach($products as $id_product => $quantity)
+                  @if($quantity->id === $row['id']) 
                   <input type="number" name="quantity[{{$id}}]"
-                    class="quantity form-control input-number" value="{{$row['quantity']}}" min="1">
+                    class="quantity form-control input-number" value="{{$row['quantity']}}" min="1" max="{{$quantity->quantity}}">
+                  @endif
+                  @endforeach
                 </div>
               </td>
-              <?php $subtotal = $row['price']*$row['quantity']?>
+              @if($row['rate'] == null)
+              <td>0%</td>
+              @else
+              <td>{{$row['rate']}}%</td>
+              @endif
+              <?php $rate_product = $row['price']*$row['quantity']*$row['rate']/100 ?>
+              <?php $subtotal = $row['price']*$row['quantity'] - $rate_product?>
               <?php $total_cart = $total_cart + $subtotal?>
               <td class="total">{{number_format($subtotal,'0',',','.')}}đ</td>
             </tr><!-- END TR-->
@@ -112,10 +129,6 @@
         <p class="d-flex">
           <span>Tổng tiền phí vận chuyển</span>
           <span>0.00đ</span>
-        </p>
-        <p class="d-flex">
-          <span>Giảm giá </span>
-          <span></span>
         </p>
         <hr>
         <p class="d-flex total-price">

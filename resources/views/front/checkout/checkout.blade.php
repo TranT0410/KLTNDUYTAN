@@ -59,6 +59,7 @@
                   <th scope="col">Sản phẩm</th>
                   <th scope="col">Số lượng</th>
                   <th scope="col">Đơn giá</th>
+                  <th scope="col">Khuyến Mãi</th>
                   <th scope="col">Thành tiền</th>
                 </tr>
               </thead>
@@ -70,7 +71,12 @@
                   <td>{{$row['name']}}</td>
                   <td>{{$row['quantity']}}</td>
                   <td>{{number_format($row['price'],'0',',','.')}}đ</td>
-                  <?php $subtotal = $row['price']*$row['quantity'] ?>
+                  <?php $subtotal = ($row['price']*$row['quantity'])-($row['price']*$row['quantity']*($row['rate']/100)) ?>
+                  @if($row['rate'] != null)
+                  <td>{{$row['rate']}}%</td>
+                  @else
+                  <td>0%</td>
+                  @endif
                   <td>{{number_format($subtotal,'0',',','.')}}</td>
                   <?php $total_product = $total_product + $subtotal ?>
                 </tr>
@@ -82,10 +88,7 @@
                   <td colspan="4" class="text-right">Miễn phí</td>
 
                 </tr>
-                <tr>
-                  <th>Khuyến mãi</th>
-                  <td colspan="4" class="text-right">%</td>
-                </tr>
+                
 
                 <tr class="order-total">
                   <th>Thuế - {{$tax->name}}</th>
@@ -94,6 +97,8 @@
                 <?php $total_order = $total_product + ($total_product*($tax->rate_tax)/100)  ?>
                 <tr>
                   <th>Thanh toán</th>
+                  <?php session()->get('price_payment');
+                        session()->put('price_payment',$total_order)?>
                   <td colspan="4" class="text-right">{{number_format($total_order,'0',',','.')}}₫</td>
                 </tr>
               </tfoot>
@@ -105,7 +110,7 @@
               <div class="form-group">
                 <div class="col-md-12">
                   <div class="radio">
-                    <label><input type="radio" name="optradio" class="mr-2">Thanh toán khi nhận
+                    <label><input type="radio" name="optradio" value="0" class="mr-2">Thanh toán khi nhận
                       hàng</label>
                   </div>
                 </div>
@@ -113,7 +118,7 @@
               <div class="form-group">
                 <div class="col-md-12">
                   <div class="radio">
-                    <label><input type="radio" name="optradio" class="mr-2">Thanh toán trực
+                    <label><input type="radio" name="optradio" value="1" class="mr-2">Thanh toán trực
                       tuyến</label>
                   </div>
                 </div>
@@ -121,8 +126,7 @@
               <div class="form-group">
                 <div class="col-md-12">
                   <div class="checkbox">
-                    <label><input type="checkbox" value="" class="mr-2"> I have read and accept
-                      the terms and conditions</label>
+                    <label><input type="checkbox" value="" class="mr-2">Tôi đồng ý hết tất cả điều khoản dịch vụ! </label>
                   </div>
                 </div>
               </div>

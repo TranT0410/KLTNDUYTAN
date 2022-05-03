@@ -28,7 +28,7 @@ class SupplierController extends Controller
         $data = $request->all();
         Supplier::create($data);
 
-        return redirect(route('admin.supplier.list'))->with('status', 'Insert supplier successfully');
+        return redirect(route('admin.supplier.list'))->with('status', 'Thêm mới nhà cung cấp thành công');
     }
 
     public function edit($id)
@@ -44,7 +44,7 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         $supplier->update($request->all());
 
-        return redirect(route('admin.supplier.list'))->with('status', 'Update supplier successfully');
+        return redirect(route('admin.supplier.list'))->with('status', 'Cập nhật nhà cung cấp thành công');
     }
 
     public function delete($id)
@@ -52,7 +52,7 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         $supplier->delete();
 
-        return redirect(route('admin.supplier.list'))->with('status', 'Delete supplier successfully');
+        return redirect(route('admin.supplier.list'))->with('status', 'Xóa nhà cung cấp thành công!');
     }
 
     public function view($id)

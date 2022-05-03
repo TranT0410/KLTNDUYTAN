@@ -26,6 +26,6 @@ class RateController extends Controller
         $rate = Rate::find($id);
         $rate->delete();
 
-        return redirect(route('admin.rate.list'))->with('status', 'Delete rate successfully');
+        return redirect(route('admin.rate.list'))->with('status', 'Xóa đánh giá thành công');
     }
 }

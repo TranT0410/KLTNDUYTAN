@@ -28,3 +28,6 @@
 	<link href="{{asset('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap')}}" rel="stylesheet">
 	<link href="{{asset('https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap')}}" rel="stylesheet">
 
+	<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
+	<!-- Custom styles for this template -->
+	<link href="{{asset('css/jumbotron-narrow.css')}}" rel="stylesheet">  

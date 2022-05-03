@@ -30,7 +30,7 @@ class NewsController extends Controller
         $data['user_id'] = auth()->user()->id;
         News::create($data);
 
-        return redirect(route('admin.news.list'))->with('status', 'Inserts news successfully!');
+        return redirect(route('admin.news.list'))->with('status', 'Thêm mới tin tức thành công!');
     }
 
     public function update($id)
@@ -48,13 +48,26 @@ class NewsController extends Controller
         }
         $news->update($data);
 
-        return redirect(route('admin.news.list'))->with('status', 'Update news successfully!');
+        return redirect(route('admin.news.list'))->with('status', 'Cập nhật tin tức thành công!');
     }
 
     public function delete($id)
     {
         $news = News::find($id);
         $news->delete();
-        return redirect(route('admin.news.list'))->with('status', 'Delete news successfully!');
+        return redirect(route('admin.news.list'))->with('status', 'Xóa tin tức thành công!');
+    }
+
+    public function newsDetail($id)
+    {
+        $news = News::find($id);
+        session()->push('recently_post_views', $news);
+        $postRecently = [];
+        if (session(('recently_post_views'))) {
+            $postRecently = array_reverse(session('recently_post_views'));
+            $postRecently = array_unique($postRecently);
+            $postRecently = array_slice($postRecently, 0, 3);
+        }
+        return view('front.news.newDetail', compact('news', 'postRecently'));
     }
 }

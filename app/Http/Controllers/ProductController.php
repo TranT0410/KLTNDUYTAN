@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Rate;
 use App\Models\Supplier;
 use App\Http\Requests\ProductRequest;
 
@@ -35,7 +36,7 @@ class ProductController extends Controller
         $data['supplier_id'] = auth()->user()->suppliers->id;
         Product::create($data);
 
-        return redirect(route('supplier.product.list'))->with('status', 'Inserts product successfully!');
+        return redirect(route('supplier.product.list'))->with('status', 'Thêm mới sản phẩm thành công!');
     }
 
     public function edit($id)
@@ -57,7 +58,7 @@ class ProductController extends Controller
         }
         $product->update($data);
 
-        return redirect(route('supplier.product.list'))->with('status', 'Update product successfully');
+        return redirect(route('supplier.product.list'))->with('status', 'Cập nhật sản phẩm thành công');
     }
 
     public function delete($id)
@@ -65,15 +66,28 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect(route('supplier.product.list'))->with('status', 'Delete product successfully');
+        return redirect(route('supplier.product.list'))->with('status', 'Xóa sản phẩm thành công');
     }
 
     public function productDetail($id)
     {
-        $product = Product::select('products.*', 'promotion_detail.rate', 'promotion_detail.quantity', 'promotion_detail.product_id')
+        $product = Product::select('products.*', 'promotion_detail.rate', 'promotion_detail.product_id')
             ->leftJoin('promotion_detail', 'products.id', '=', 'promotion_detail.product_id')
             ->where('products.id', $id)
             ->first();
-        return view('front.product.productDetail', compact('product'));
+        $rates = Rate::where('product_id', $id)
+            ->get();
+        return view('front.product.productDetail', compact('product', 'rates'));
+    }
+
+    public function rate($id, Request $request)
+    {
+        $data = $request->all();
+        Rate::create([
+            'username' => $data['username'],
+            'rate' => $data['rate'],
+            'product_id' => $id,
+        ]);
+        return back();
     }
 }

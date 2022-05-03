@@ -24,7 +24,7 @@ class TaxController extends Controller
     {
         $data = $request->all();
         Tax::create($data);
-        return redirect(route('admin.tax.list'))->with('status', 'Insert Tax Sucessfully');
+        return redirect(route('admin.tax.list'))->with('status', 'Thêm mới thuế thành công');
     }
 
     public function update($id)
@@ -39,13 +39,13 @@ class TaxController extends Controller
         $data = $request->all();
         $tax->update($data);
 
-        return redirect(route('admin.tax.list'))->with('status', 'Update tax successfully');
+        return redirect(route('admin.tax.list'))->with('status', 'Cập nhật thuế thành công');
     }
     public function delete($id)
     {
         $tax = Tax::find($id);
         $tax->delete($id);
 
-        return redirect(route('admin.tax.list'))->with('status', 'Delete tax successfully');
+        return redirect(route('admin.tax.list'))->with('status', 'Xóa thuế thành công');
     }
 }

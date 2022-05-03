@@ -28,7 +28,7 @@ class UserController extends Controller
         $data['password'] = Hash::make('password');
         User::create($data);
 
-        return redirect(route('admin.user.list'))->with('status', 'Insert user successfully');
+        return redirect(route('admin.user.list'))->with('status', 'Thêm mới người dùng thành công!');
     }
 
     public function view($id)
@@ -49,6 +49,13 @@ class UserController extends Controller
         $user = User::find($id);
         $data = $request->all();
         $user->update($data);
-        return redirect(route('admin.user.list'))->with('status', 'Update user successfully');
+        return redirect(route('admin.user.list'))->with('status', 'Cập nhật người dùng thành công');
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect(route('admin.user.list'))->with('status', 'Xóa người dùng thành công');
     }
 }
