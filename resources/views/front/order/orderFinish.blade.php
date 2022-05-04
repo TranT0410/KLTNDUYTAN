@@ -193,10 +193,7 @@
                                 <button class="stardust-button stardust-button--primary _2x5SvJ">Liên hệ Người
                                     bán</button>
                             </div>
-                            <div class="_3YxeCv">
-                                <button class="stardust-button stardust-button--secondary _2x5SvJ">Hủy đơn
-                                    hàng</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

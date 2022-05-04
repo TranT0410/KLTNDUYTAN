@@ -81,11 +81,17 @@
 						@endforeach
 					</div>
 				</div>
-			
 			</div>
 		</div>
 	</div>
-
+	<div class="product_sorting_container product_sorting_container_bottom clearfix">
+	<div class="pages d-flex flex-row align-items-center">
+		<div class="clearfix pd-30">
+			<div class="pull-left">
+		{{ $products->links() }}
+			</div>
+		</div>
+	</div>
 	<!-- Deal of the week -->
 
 	<div class="deal_ofthe_week">

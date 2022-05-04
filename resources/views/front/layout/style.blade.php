@@ -31,3 +31,6 @@
 	<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
 	<!-- Custom styles for this template -->
 	<link href="{{asset('css/jumbotron-narrow.css')}}" rel="stylesheet">  
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/categories_styles.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/categories_responsive.css')}}">

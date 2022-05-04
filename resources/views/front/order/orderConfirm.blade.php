@@ -194,8 +194,8 @@
                                     bán</button>
                             </div>
                             <div class="_3YxeCv">
-                                <button class="stardust-button stardust-button--secondary _2x5SvJ">Hủy đơn
-                                    hàng</button>
+                                <a href="{{route('front.order.block',$row->id)}}"class="stardust-button stardust-button--secondary _2x5SvJ">Hủy đơn
+                                    hàng</a>
                             </div>
                         </div>
                     </div>

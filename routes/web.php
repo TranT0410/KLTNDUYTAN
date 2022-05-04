@@ -188,6 +188,8 @@ Route::prefix('supplier')->group(function () {
 
         Route::post('insert-order', [OrderController::class, 'createOrder'])
             ->name('order.create');
+        Route::get('block-order/{id}', [OrderController::class, 'blockfront'])
+            ->name('front.order.block');
     });
     Route::prefix('product')->group(function () {
         Route::get('list', [ProductController::class, 'index'])
@@ -243,6 +245,7 @@ Route::prefix('supplier')->group(function () {
 Route::get('index/{id?}', [HomeController::class, 'index'])
     ->name('home');
 
+
 Route::prefix('home')->group(function () {
     Route::get('product-detail/{id}', [ProductController::class, 'productDetail'])
         ->name('home.product.detail');
@@ -292,4 +295,7 @@ Route::prefix('home')->group(function () {
 
     Route::get('news-detail/{id}', [NewsController::class, 'newsDetail'])
         ->name('home.news.detail');
+
+    Route::get('search', [HomeController::class, 'search'])
+        ->name('home.search');
 });

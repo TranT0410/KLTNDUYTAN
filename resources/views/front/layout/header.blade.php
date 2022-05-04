@@ -51,10 +51,13 @@
 						<a href="{{route('home')}}">LA HERA</span></a>
 					</div>
 					<nav class="navbar">
+					<form action="{{route('home.search')}}" method="GET">
+						@csrf
 						<ul class="navbar_menu">
-							<input type="text" placeholder="Tìm kiếm" class="search">
-							<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+							<input type="text" placeholder="Tìm kiếm" class="search" name="search">
+							<li><button class="btn btn-primary" type="submit" name="submit-search"><i class="fa fa-search" aria-hidden="true"></i></button></li>
 						</ul>
+					</form>
 						<ul class="navbar_user">								
 							<li><a href="{{route('home.profile')}}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 							<li class="checkout">

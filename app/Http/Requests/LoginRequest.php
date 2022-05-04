@@ -26,6 +26,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|email',
             'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ];
     }
 
@@ -34,7 +35,9 @@ class LoginRequest extends FormRequest
         return [
             'email.required' => 'Email đăng nhập không được để trống',
             'email.email' => 'Không đúng định dạng email',
-            'password.required' => 'Mật khẩu không được để trống'
+            'password.required' => 'Mật khẩu không được để trống',
+            'g-recaptcha-response.required' => 'Vui lòng xác minh rằng bạn không phải là rô bốt',
+            'g-recaptcha-response.captcha' => 'Lỗi CAPTCHA! thử lại sau hoặc liên hệ với quản trị viên trang web.',
         ];
     }
 }

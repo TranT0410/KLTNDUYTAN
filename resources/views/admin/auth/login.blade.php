@@ -39,14 +39,14 @@
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Vui lòng nhập tên đăng nhập">
-					<input class="input100" type="email" name="email" placeholder="Email đăng nhập">
+					<input class="input100" type="email" name="email" placeholder="Email đăng nhập" value="{{old('email')}}">
 					<span class="focus-input100"></span>
 				</div>
 				@error('email')
 				<span style="color:red">{{$message}}</span>
 				@enderror
 				<div class="wrap-input100 validate-input m-b-25" data-validate="Vui lòng nhập mật khẩu">
-					<input class="input100" type="password" name="password" placeholder="Mật khẩu">
+					<input class="input100" type="password" name="password" placeholder="Mật khẩu" value="{{old('password')}}">
 					<span class="focus-input100"></span>
 				</div>
 				@error('password')
@@ -58,15 +58,15 @@
 					<span class="focus-input100"></span>
 				</div> --}}
 
-				<!-- <div class="form-group">
+				 <div class="form-group">
 					<div class="captcha-code">
-						<input type="text" name="codecaptcha" placeholder="Mã xác nhận" required
-							style="width: 45%;margin-left: -50px;margin-top: 20px" class="form-control"></input>
-						<img src="./public/img/nencapcha222.png" alt="Captcha" class="img-captcha"
-							style="width:100px;height:50px; margin-left:5px; ">
-						<h2 class="details-captcha" style="position:absolute; margin-left:140px; color:black;"></h2>
+						{!! NoCaptcha::renderJs() !!}
+						{!! NoCaptcha::display() !!}
 					</div>
-				</div> -->
+				</div>
+				@error('g-recaptcha-response')
+				<span style="color:red">{{$message}}</span>
+				@enderror
 				
 				<div class="container-login100-form-btn">
 					<button class="login100-form-btn" type="submit">

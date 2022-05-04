@@ -21,6 +21,7 @@ class OrderController extends Controller
             ->where('suppliers.id', auth()->user()->suppliers->id)
             ->where('orders.status', 1)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->orderByDesc('created_at')
             ->get();
         return view('supplier.order.listOrderNew', compact('orders'));
     }
@@ -43,6 +44,7 @@ class OrderController extends Controller
             ->where('suppliers.id', auth()->user()->suppliers->id)
             ->where('orders.status', 2)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->orderByDesc('created_at')
             ->get();
 
         return view('supplier.order.listOrderShipping', compact('orders'));
@@ -57,6 +59,7 @@ class OrderController extends Controller
             ->where('suppliers.id', auth()->user()->suppliers->id)
             ->where('orders.status', 3)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->orderByDesc('created_at')
             ->get();
 
         return view('supplier.order.listOrderShiped', compact('orders'));
@@ -88,6 +91,7 @@ class OrderController extends Controller
             ->where('suppliers.id', auth()->user()->suppliers->id)
             ->where('orders.status', 4)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
+            ->orderByDesc('created_at')
             ->get();
 
         return view('supplier.order.listOrderBlock', compact('orders'));
@@ -159,7 +163,7 @@ class OrderController extends Controller
         $products = Product::all();
         $user_orders = DB::table('order_details')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
             ->where('status', 1)
             ->get();
         return view('front.order.orderConfirm', compact('user_orders', 'products'));
@@ -170,7 +174,7 @@ class OrderController extends Controller
         $products = Product::all();
         $user_orders = DB::table('order_details')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
             ->get();
         return view('front.order.orderAll', compact('user_orders', 'products'));
     }
@@ -180,7 +184,7 @@ class OrderController extends Controller
         $products = Product::all();
         $user_orders = DB::table('order_details')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
             ->where('status', 2)
             ->get();
         return view('front.order.orderShip', compact('user_orders', 'products'));
@@ -190,7 +194,7 @@ class OrderController extends Controller
         $products = Product::all();
         $user_orders = DB::table('order_details')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
             ->where('status', 3)
             ->get();
         return view('front.order.orderFinish', compact('user_orders', 'products'));
@@ -200,9 +204,18 @@ class OrderController extends Controller
         $products = Product::all();
         $user_orders = DB::table('order_details')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
             ->where('status', 4)
             ->get();
         return view('front.order.orderBlock', compact('user_orders', 'products'));
+    }
+
+    public function blockfront(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order['status'] = 4;
+        $order->update($request->all());
+
+        return redirect(route('home.orders_confirm'));
     }
 }
