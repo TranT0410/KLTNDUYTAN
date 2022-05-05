@@ -15,6 +15,8 @@ use App\Http\Controllers\RateController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StatisticalController;
+use App\Http\Controllers\CustomerController;
+
 
 
 
@@ -74,6 +76,10 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
         Route::get('view/{id}', [CategoryController::class, 'view'])
             ->name('admin.category.view');
+    });
+    Route::prefix('customers')->group(function () {
+        Route::get('list', [CustomerController::class, 'index'])
+            ->name('admin.customer');
     });
     Route::prefix('statistical')->group(function () {
         Route::get('list', [StatisticalController::class, 'index'])

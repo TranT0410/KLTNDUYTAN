@@ -129,11 +129,11 @@
             @endcannot
             @cannot('view-user')
             <li class="dropdown">
-                <a href="javascript:;" class="dropdown-toggle">
+                <a href="#" class="dropdown-toggle">
                     <span class="micon dw dw-clipboard"></span><span class="mtext">Quản Lý Khách Hàng</span>
                 </a>
                 <ul class="submenu">
-                    <li><a href="#">Danh Sách Khách Hàng</a></li>
+                    <li><a href="{{route('admin.customer')}}">Danh Sách Khách Hàng</a></li>
                 </ul>
             </li>
             @endcannot
