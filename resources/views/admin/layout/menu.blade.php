@@ -172,7 +172,12 @@
                     <span class="micon dw dw-clipboard"></span><span class="mtext">Thống Kê</span>
                 </a>
                 <ul class="submenu">
-                    <li><a href="#">Thống Kê Doanh Thu</a></li>
+                    @can('view-tax')
+                    <li><a href="{{route('admin.statistical.list')}}">Thống Kê Doanh Thu website</a></li>
+                    @endcan
+                    @cannot('view-promotion')
+                    <li><a href="{{route('supplier.statistical.list')}}">Thống Kê Doanh Thu Bán Hàng</a></li>
+                    @endcannot
                 </ul>
             </li>
             @can('view-news')

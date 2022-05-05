@@ -218,4 +218,11 @@ class OrderController extends Controller
 
         return redirect(route('home.orders_confirm'));
     }
+
+    public function delete($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+        return redirect(route('supplier.order.orders_block'))->with('status', 'Xóa');
+    }
 }

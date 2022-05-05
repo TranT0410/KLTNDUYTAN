@@ -14,6 +14,8 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StatisticalController;
+
 
 
 
@@ -72,6 +74,13 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
         Route::get('view/{id}', [CategoryController::class, 'view'])
             ->name('admin.category.view');
+    });
+    Route::prefix('statistical')->group(function () {
+        Route::get('list', [StatisticalController::class, 'index'])
+            ->name('admin.statistical.list');
+
+        Route::get('list-sales', [StatisticalController::class, 'sales'])
+            ->name('supplier.statistical.list');
     });
     Route::prefix('rate')->group(function () {
         Route::get('list', [RateController::class, 'index'])
@@ -182,6 +191,9 @@ Route::prefix('supplier')->group(function () {
 
         Route::get('orders-block', [OrderController::class, 'listOrderBlock'])
             ->name('supplier.order.orders_block');
+
+        Route::get('order-delete/{id}', [OrderController::class, 'delete'])
+            ->name('supplier.order.orders_delete');
 
         Route::get('orders-detail/{id}', [OrderController::class, 'orderDetail'])
             ->name('supplier.order.orders_detail');
