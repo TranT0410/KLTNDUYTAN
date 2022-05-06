@@ -23,22 +23,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($order as $row)
                                 <tr>
-                                    <td class="an">{{ $row->id }}</td>
-                                    <td class="an">{{ $row->categories->name }}</td>
-                                    <td class="an">{{ $row->products->name }}</td>
-                                    <td class="an"><img src="{{ Storage::url($row->products->image) }}"
+                                    <td class="an">{{ $order->id }}</td>
+                                    <td class="an">{{ $order->categories->name }}</td>
+                                    <td class="an">{{ $order->products->name }}</td>
+                                    <td class="an"><img src="{{ Storage::url($order->products->image) }}"
                                                         style="width:120px;height:120px;overflow:hidden">
                                     </td>
-                                    <td class="an">{{ $row->quantity }}</td>
-                                    <td class="an">{{ number_format($row->price,'0',',','.') }}đ</td>
-                                    <td class="an">{{ $row->Promotion_rate == null ? 0 : $row->Promotion_rate }}%</td>
-                                    <?php $subtotal = $row->quantity * $row->price?>
-                                    <?php $total = $subtotal - ($subtotal*($row->Promotion_rate)/100)?>
+                                    <td class="an">{{ $order->quantity }}</td>
+                                    <td class="an">{{ number_format($order->price,'0',',','.') }}đ</td>
+                                    <td class="an">{{ $order->Promotion_rate == null ? 0 : $order->Promotion_rate }}%</td>
+                                    <?php $subtotal = $order->quantity * $order->price?>
+                                    <?php $total = $subtotal - ($subtotal*($order->Promotion_rate)/100)?>
                                     <td class="an">{{number_format($total,'0',',','.')}}đ</td>
                                 </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>

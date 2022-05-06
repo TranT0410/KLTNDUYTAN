@@ -20,23 +20,32 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="lastname">Tên người nhận</label>
-                <input type="text" name="receiver" class="form-control" placeholder="">
+                <input type="text" name="receiver" class="form-control" placeholder="" value="{{old('receiver')}}">
               </div>
+              @error('receiver')
+              <span style="color:red">{{$message}}</span>
+              @enderror
             </div>
             <div class="w-100"></div>
             <div class="col-md-12">
               <div class="form-group">
                 <label for="lastname">Địa chỉ nhận hàng</label>
-                <input type="text" name="address" class="form-control" placeholder="">
+                <input type="text" name="address" class="form-control" placeholder="" value="{{old('address')}}">
               </div>
+              @error('address')
+              <span style="color:red">{{$message}}</span>
+              @enderror
             </div>
 
             <div class="w-100"></div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="phone">Số điện thoại</label>
-                <input type="text" name="phone" class="form-control" placeholder="">
+                <input type="text" name="phone" class="form-control" placeholder="" value="{{old('phone')}}">
               </div>
+              @error('phone')
+              <span style="color:red">{{$message}}</span>
+              @enderror
             </div>
             <div class="col-md-12">
               <div class="form-group mt-4">
@@ -123,11 +132,17 @@
                   </div>
                 </div>
               </div>
+              @error('optradio')
+              <span style="color:red">{{$message}}</span>
+              @enderror
               <div class="form-group">
                 <div class="col-md-12">
                   <div class="checkbox">
-                    <label><input type="checkbox" value="" class="mr-2">Tôi đồng ý hết tất cả điều khoản dịch vụ! </label>
+                    <label><input type="checkbox" name="checkbox" value="1" class="mr-2">Tôi đồng ý hết tất cả điều khoản dịch vụ! </label>
                   </div>
+                  @error('checkbox')
+              <span style="color:red">{{$message}}</span>
+              @enderror
                 </div>
               </div>
               <div class="payment-box">

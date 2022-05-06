@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\PromotionDetail;
 use App\Models\Tax;
 use App\Models\Product;
+use App\Models\Supplier;
+use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -46,7 +49,6 @@ class OrderController extends Controller
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
             ->orderByDesc('created_at')
             ->get();
-
         return view('supplier.order.listOrderShipping', compact('orders'));
     }
 
@@ -70,6 +72,23 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order['status'] = 3;
         $order->update($request->all());
+        $supplier_id = auth()->user()->suppliers->id;
+        $order_details = OrderDetail::select('order_details.*')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
+            ->where('order_details.order_id', $id)
+            ->where('suppliers.id', $supplier_id)
+            ->first();
+        $user = auth()->user()->id;
+        $checkOrder = Payment::where('order_id', $order_details['order_id'])
+            ->first();
+        if ($checkOrder == null) {
+            Payment::create([
+                'order_id' => $order_details['order_id'],
+                'user_id' => $user,
+                'status' => 1,
+            ]);
+        }
 
         return redirect(route('supplier.order.orders_shipping',))->with('status', 'Confirm Order Successful');
     }
@@ -105,7 +124,7 @@ class OrderController extends Controller
             ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
             ->where('order_details.order_id', $id)
             ->where('suppliers.id', $supplier_id)
-            ->get();
+            ->first();
 
         return view('supplier.order.orderDetail', compact('order'));
     }
@@ -117,7 +136,7 @@ class OrderController extends Controller
         return view('front.checkout.checkout', compact('mycart', 'tax'));
     }
 
-    public function createOrder(Request $request)
+    public function createOrder(OrderRequest $request)
     {
         $order = $request->all();
         $tax = Tax::first();
@@ -160,54 +179,68 @@ class OrderController extends Controller
 
     public function userOrderNews()
     {
-        $products = Product::all();
-        $user_orders = DB::table('order_details')
-            ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
-            ->where('status', 1)
+        $suppliers = Supplier::all();
+        $user_orders = OrderDetail::select('order_details.*', 'products.image', 'products.name', 'products.supplier_id', 'orders.receiver', 'orders.phone', 'orders.address', 'payment.status')
+            ->join('orders', 'order_details.order_id', '=', 'orders.id',)
+            ->join('products', 'products.id', '=', 'order_details.product_id')
+            ->leftjoin('payment', 'payment.order_id', '=', 'orders.id')
+            ->where('orders.username', auth()->user()->name)
+            ->where('orders.status', 1)
             ->get();
-        return view('front.order.orderConfirm', compact('user_orders', 'products'));
+        return view('front.order.orderConfirm', compact('user_orders', 'suppliers'));
     }
 
     public function allOrder()
     {
-        $products = Product::all();
-        $user_orders = DB::table('order_details')
+        $suppliers = Supplier::all();
+
+        $user_orders = OrderDetail::select('order_details.*', 'products.image', 'products.supplier_id', 'products.name', 'orders.receiver', 'orders.phone', 'orders.address', 'payment.status')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->leftjoin('payment', 'payment.order_id', '=', 'orders.id')
+            ->where('orders.username', auth()->user()->name)
             ->get();
-        return view('front.order.orderAll', compact('user_orders', 'products'));
+        // dd($user_orders);
+        return view('front.order.orderAll', compact('user_orders', 'suppliers'));
     }
 
     public function orderShip()
     {
-        $products = Product::all();
-        $user_orders = DB::table('order_details')
+        $suppliers = Supplier::all();
+
+        $user_orders = OrderDetail::select('order_details.*', 'products.image', 'products.name',  'orders.receiver', 'orders.phone', 'orders.address', 'payment.status')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
-            ->where('status', 2)
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('payment', 'payment.order_id', '=', 'orders.id')
+            ->where('orders.username', auth()->user()->name)
+            ->where('orders.status', 2)
             ->get();
-        return view('front.order.orderShip', compact('user_orders', 'products'));
+        return view('front.order.orderShip', compact('user_orders', 'suppliers'));
     }
     public function orderFinish()
     {
-        $products = Product::all();
-        $user_orders = DB::table('order_details')
+        $suppliers = Supplier::all();
+
+        $user_orders = OrderDetail::select('order_details.*', 'products.image', 'products.name',  'orders.receiver', 'orders.phone', 'orders.address', 'payment.status')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
-            ->where('status', 3)
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('payment', 'payment.order_id', '=', 'orders.id')
+            ->where('orders.username', auth()->user()->name)
+            ->where('orders.status', 3)
             ->get();
-        return view('front.order.orderFinish', compact('user_orders', 'products'));
+        return view('front.order.orderFinish', compact('user_orders', 'suppliers'));
     }
     public function orderBlock()
     {
-        $products = Product::all();
-        $user_orders = DB::table('order_details')
+        $suppliers = Supplier::all();
+
+        $user_orders = OrderDetail::select('order_details.*', 'products.image', 'products.name',  'orders.receiver', 'orders.phone', 'orders.address')
             ->join('orders', 'orders.id', '=', 'order_details.order_id')
-            ->select('orders.id', 'receiver', 'phone', 'address', 'description', 'quantity', 'price', 'Promotion_rate', 'category_id', 'product_id', 'order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->where('orders.username', auth()->user()->name)
             ->where('status', 4)
             ->get();
-        return view('front.order.orderBlock', compact('user_orders', 'products'));
+        return view('front.order.orderBlock', compact('user_orders', 'suppliers'));
     }
 
     public function blockfront(Request $request, $id)

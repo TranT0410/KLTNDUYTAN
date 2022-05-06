@@ -91,12 +91,11 @@
                         <div class="GuWdvd">
                             <div class="WqnWb-">
                                 <div class="_1DPpu5">
-                                        @foreach($products as $product)
-                                            @if($product->id === $row->product_id)
-                                            <div class="_1CIbL0">{{$product->suppliers->name}}</div>
-                                            @endif
-                                        @endforeach  
-                                    
+                                    @foreach($suppliers as $supplier)
+                                    @if($supplier->id === $row['supplier_id'])
+                                    <div class="_1CIbL0">{{$supplier->name}}</div>
+                                    @endif
+                                    @endforeach  
                                     <div class="_1q53YG">
                                         <button class="stardust-button stardust-button--primary">
                                             <i class="fa fa-comments-o"></i>
@@ -129,7 +128,7 @@
 
                                                             </div>
                                                             <div class="lahera-image__content"
-                                                                style="background-image: url(https://cf.shopee.vn/file/ea4e475a16ce190b5b86c3b25250a9a1);">
+                                                                style="background-image: url({{Storage::url($row->image)}});">
                                                                 <div class="lahera-image__content--blur"></div>
                                                             </div>
 
@@ -138,12 +137,7 @@
                                                     <div class="_1cxKtp">
                                                         <div>
                                                             <div class="_1xHDVY">
-                                                                @foreach($products as $product)
-                                                                @if($product->id === $row->product_id)
-                                                                <span class="_30COVM">{{$product->name}}</span>
-                                                                @endif
-                                                                @endforeach    
-                                            
+                                                                <span class="_30COVM">{{$row->name}}</span>
                                                             </div>
                                                         </div>
                                                         <div>
