@@ -1349,11 +1349,15 @@ section
 .product_name
 {
 	margin-top: 27px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .product_name a
 {
 	color: #1e1e27;
 	line-height: 20px;
+	
 }
 .product_name:hover a
 {

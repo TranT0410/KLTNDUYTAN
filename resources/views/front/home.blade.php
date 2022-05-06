@@ -62,20 +62,22 @@
 						@if($product->rate == null)
 						<!-- Product 1 -->
 						<div class="product-item men">
-							<div class="product discount product_filter">
-								<a href="{{route('home.product.detail',$product->id)}}">
-								<div class="product_image">
-									<img src="{{Storage::url($product->image)}}" alt="">
+								<div class="product product_filter">
+									<div class="product_image">
+										<a href="{{route('home.product.detail',$product->id)}}"></a>
+										<img src="{{Storage::url($product->image)}}" alt="">
+									</div>
+									<div class="favorite"></div>
+									<div
+										class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
+										<span>new</span></div>
+									<div class="product_info">
+										<h6 class="product_name"><a href="{{route('home.product.detail',$product->id)}}">{{$product->name}}</a></h6>
+										<?php $price_product = number_format($product->price)?>
+										<div class="product_price">{{$price_product}}đ</div>
+									</div>
+									<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 								</div>
-								</a>
-								<div class="favorite favorite_left"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">{{$product->name}}</a></h6>
-									<?php $price_product = number_format($product->price)?>
-									<div class="product_price">{{$price_product}}đ</div>
-								</div>
-								<div class="red_button add_to_cart_button" style="width:80%"><a href="{{route('home.cart.add',$product->id)}}">Thêm Vào Giỏ</a></div>
-							</div>
 						</div>
 						@endif
 						@endforeach

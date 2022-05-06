@@ -132,7 +132,7 @@
         </p>
         <hr>
         <p class="d-flex total-price">
-          <span>Tổng tiền thanh toán</span>
+          <span>Tổng tiền</span>
           <span>{{number_format($total_cart,'0',',','.')}}đ</span>
         </p>
       </div>

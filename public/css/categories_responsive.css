@@ -62,11 +62,11 @@
 {
 	.product-item
 	{
-		height: 360px;
+		height: auto;
 	}
 	.product
 	{
-		height: 320px;
+		height: auto;
 	}
 }
 
@@ -401,6 +401,7 @@
 	.add_to_cart_button
 	{
 		margin-top: 20px;
+		margin-left: 0;
 	}
 	.section_title::after
 	{
