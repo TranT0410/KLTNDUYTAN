@@ -64,8 +64,7 @@
 						<div class="product-item men">
 								<div class="product product_filter">
 									<div class="product_image">
-										<a href="{{route('home.product.detail',$product->id)}}"></a>
-										<img src="{{Storage::url($product->image)}}" alt="">
+										<a href="{{route('home.product.detail',$product->id)}}"><img src="{{Storage::url($product->image)}}" alt="">										</a>
 									</div>
 									<div class="favorite"></div>
 									<div

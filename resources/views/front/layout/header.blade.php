@@ -1,18 +1,12 @@
 <header class="header trans_300">
-
-  <!-- Top Navigation -->
-
   <div class="top_nav">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">						
-        </div>
+				<div class="col-md-6">
+				</div>
         <div class="col-md-6 text-right">
           <div class="top_nav_right">
             <ul class="top_nav_menu">
-
-              <!-- Account -->
-
               <?php if(auth()->user()){?>
 								<li class="language">
 									<a href="#">						
@@ -42,7 +36,6 @@
       </div>
     </div>
   </div>
-
 	<div class="main_nav_container">
 		<div class="container">
 			<div class="row">
@@ -83,5 +76,4 @@
 			</div>
 		</div>
 	</div>
-</header>
-
+</header> 
