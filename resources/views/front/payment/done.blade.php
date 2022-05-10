@@ -1,11 +1,9 @@
 @extends('front.layout.master')
 @section('content')
-<div class="container">
-  <div class="header clearfix">
-      <h3 class="text-muted">Thông tin đơn hàng</h3>
-  </div>
-  <div class="table-responsive">
+<div class="container" style="margin-top: 20%;">
+  <div class="table-responsive" style="margin-top: 20%;">
       <div class="form-group">
+        <h3 class="text-muted">Thông tin đơn hàng</h3>
           <label >Mã đơn hàng:</label>
           
           <label><?php echo $_GET['vnp_TxnRef'] ?></label>

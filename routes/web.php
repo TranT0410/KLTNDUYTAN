@@ -303,6 +303,9 @@ Route::prefix('home')->group(function () {
     Route::get('orders-block', [OrderController::class, 'orderBlock'])
         ->name('home.orders_block');
 
+    Route::get('order-back/{id}', [OrderController::class, 'orderBack'])
+        ->name('home.orders_back');
+
     Route::get('payment', [PaymentController::class, 'index'])
         ->name('front.payment');
     Route::post('payment', [PaymentController::class, 'payment'])

@@ -75,7 +75,7 @@
 										<?php $price_product = number_format($product->price)?>
 										<div class="product_price">{{$price_product}}đ</div>
 									</div>
-									<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+									<div class="red_button add_to_cart_button"><a href="{{route('home.cart.add',$product->id)}}">Thêm Vào Giỏ</a></div>
 								</div>
 						</div>
 						@endif

@@ -35,7 +35,7 @@ class OrderController extends Controller
         $order['status'] = 2;
         $order->update($request->all());
 
-        return redirect(route('supplier.order.orders_new',))->with('status', 'Confirm Order Successful');
+        return redirect(route('supplier.order.orders_new',))->with('status', 'Xác nhận đơn hàng thành công');
     }
 
     public function ordersShiping()
@@ -90,7 +90,7 @@ class OrderController extends Controller
             ]);
         }
 
-        return redirect(route('supplier.order.orders_shipping',))->with('status', 'Confirm Order Successful');
+        return redirect(route('supplier.order.orders_shipping',))->with('status', 'Xác nhận đơn hàng thành công');
     }
     public function block(Request $request, $id)
     {
@@ -98,7 +98,7 @@ class OrderController extends Controller
         $order['status'] = 4;
         $order->update($request->all());
 
-        return redirect(route('supplier.order.orders_new',))->with('status', 'Delete Order Successful');
+        return redirect(route('supplier.order.orders_new',))->with('status', 'Xóa đơn hàng thành công');
     }
 
     public function listOrderBlock()
@@ -216,6 +216,15 @@ class OrderController extends Controller
             ->where('orders.status', 2)
             ->get();
         return view('front.order.orderShip', compact('user_orders', 'suppliers'));
+    }
+    public function orderBack(Request $request, $id)
+    {
+
+        $order = Order::find($id);
+        $order['status'] = 1;
+        $order->update($request->all());
+
+        return redirect(route('supplier.order.orders_new',))->with('status', 'Chuyển đổi thành công');
     }
     public function orderFinish()
     {

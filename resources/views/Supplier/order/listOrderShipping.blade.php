@@ -46,6 +46,10 @@
                                                             <a class="dropdown-item"
                                                        href="{{route('supplier.order.orders_detail',$row->id)}}"><i
                                                             class="dw dw-edit2"></i> Chi tiết Đơn Hàng</a>
+                                                            <a class="dropdown-item"
+                                                           href="{{route('home.orders_back',$row->id)}}"><i
+                                                                class="dw dw-delete-3"></i>
+                                                            Trả Về Duyệt</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('supplier.order.block',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
