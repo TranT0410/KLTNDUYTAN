@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\ForgetRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
@@ -113,6 +114,51 @@ class AuthController extends Controller
             return back()->with('status', 'Đã đổi mật khẩu thành công');
         } else {
             return back()->with('status', 'Xác nhận mật khẩu không chính xác');
+        }
+    }
+    public function viewForget()
+    {
+        return view('front.account.forget');
+    }
+
+    public function forgetPassword(ForgetRequest $request)
+    {
+        $data = $request->all();
+        $email = $request->email;
+        $code = substr(md5(rand()), 0, 6);
+        $titleEmail = 'Xác thực email';
+        $sender = 'Trang Sức Việt';
+        $data['email'] = $email;
+
+        session()->put('email', [
+            'code' => $code,
+            'email' => $email,
+            'password' => $data['passwordNew'],
+        ]);
+        Mail::send('front.account.mail', $data, function ($message) use ($titleEmail, $sender, $data) {
+            $message->to($data['email'])->subject($titleEmail);
+            $message->from($data['email'], $sender);
+        });
+        return redirect(route('admin.confirm.emailForget'));
+    }
+
+    public function viewConfirm()
+    {
+        return view('front.account.confirmForget');
+    }
+    public function confirmForget(Request $request)
+    {
+        $data = $request->all();
+        $dataUser = session('email');
+        if ($data['confirmEmail'] === $dataUser['code']) {
+            $check = User::where('email', $dataUser['email'])->first();
+            if ($check != null) {
+                $check['password'] = Hash::make($dataUser['password']);
+                $check->update();
+            }
+            return redirect(route('admin.user.login'))->with('status', 'Thay Đổi Mật Khẩu Thành Công');
+        } else {
+            return back()->with('status', 'Mã xác nhận chưa nhập hoặc không chính xác');
         }
     }
 }

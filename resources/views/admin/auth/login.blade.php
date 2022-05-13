@@ -79,6 +79,11 @@
 				</div>
 				<div class="text-center p-t-57 p-b-20">
 					<span class="txt1">
+						<a href="{{route('admin.forget.password')}}" class="txt2 hov1">Quên mật khẩu</a>
+					</span>
+				</div>
+				<div class="text-center p-t-57 p-b-20">
+					<span class="txt1">
 						Chưa có tài khoản? <a href="{{route('admin.user.register')}}" class="txt2 hov1">Đăng ký ngay</a>
 					</span>
 				</div>

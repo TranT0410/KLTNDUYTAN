@@ -60,6 +60,16 @@ Route::prefix('admin')->group(function () {
         ->name('admin.change.password');
 
     Route::post('change-password', [AuthController::class, 'changePassword']);
+
+    Route::get('forget-password', [AuthController::class, 'viewForget'])
+        ->name('admin.forget.password');
+
+    Route::get('confirm-pass', [AuthController::class, 'viewConfirm'])
+        ->name('admin.confirm.emailForget');
+
+    Route::post('confirm-pass', [AuthController::class, 'confirmForget']);
+
+    Route::post('forget-password', [AuthController::class, 'forgetPassword']);
 });
 Route::prefix('admin')->middleware('admin.login')->group(function () {
 
