@@ -55,6 +55,11 @@ Route::prefix('admin')->group(function () {
         ->name('admin.confirm.email');
 
     Route::post('confirm-email', [AuthController::class, 'confirmPost']);
+
+    Route::get('change-password', [AuthController::class, 'viewPassword'])
+        ->name('admin.change.password');
+
+    Route::post('change-password', [AuthController::class, 'changePassword']);
 });
 Route::prefix('admin')->middleware('admin.login')->group(function () {
 

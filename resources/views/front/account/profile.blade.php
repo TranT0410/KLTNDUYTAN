@@ -36,7 +36,7 @@
             <a class="_3SsG4j _3SzYTH" href="./account.html">
               <span class="_5PrdXX">Hồ sơ</span>
             </a>
-            <a class="_3SsG4j" href="./password.html">
+            <a class="_3SsG4j" href="{{route('admin.change.password')}}">
               <span class="_5PrdXX">Đổi mật khẩu</span>
             </a>
           </div>
@@ -142,62 +142,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              {{-- <div class="_3BlbUs">
-                <div class="_1iNZU3">
-                  <div class="_2PfA-y">
-                    <label>Tên shop</label>
-                  </div>
-                  <div class="_2_JugQ">
-                    <div class="input-with-validator-wrapper">
-                      <div class="input-with-validator">
-                        <input style="border: none; width: 100%;" type="text"
-                          placeholder maxlength="255" value="tranvana">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
-              {{-- <div class="_3BlbUs">
-                <div class="_1iNZU3">
-                  <div class="_2PfA-y">
-                    <label>Giới tính</label>
-                  </div>
-                  <div class="_2_JugQ">
-                    <div class="_119wWy">
-                      <div class="stardust-radio-group">
-                        <div class="stardust-radio" tabindex="0">
-                          <input type="radio" name="sex" value="nam"
-                            style="margin-right: 15%;" checked>Nam
-                        </div>
-                        <div class="stardust-radio" tabindex="0">
-                          <input type="radio" name="sex" value="nu"
-                            style="margin-right: 15%;">Nữ
-                        </div>
-                        <div class="stardust-radio" tabindex="0">
-                          <input type="radio" name="sex" value="khac"
-                            style="margin-right: 15%;">Khác
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
-              <!-- <div class="_3BlbUs">
-              <div class="_1iNZU3">
-                <div class="_2PfA-y">
-                  <label>Ngày sinh</label>
-                </div>
-                <div class="_2_JugQ">
-                  <div class="_2w5iZe">
-                    HỖ NI NHA LY
-                  </div>
-                </div>
-              </div>
-            </div> -->
-              <div class="_31PFen">
-                <button class="btn btn-solid-primary btn--m btn--inline"
-                  type="button">Lưu</button>
               </div>
             </form>
           </div>

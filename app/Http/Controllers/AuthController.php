@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
@@ -36,7 +37,7 @@ class AuthController extends Controller
                 return redirect()->route('home');
             }
         } else {
-            return back()->with('message', 'Email hoặc password không đúng!');
+            return back()->with('message', 'Email hoặc mật khẩu không đúng!');
         }
     }
     public function handleLogout()
@@ -93,6 +94,25 @@ class AuthController extends Controller
             return redirect(route('admin.user.login'))->with('status', 'Đăng Ký Thành Công');
         } else {
             return back()->with('status', 'Mã xác nhận chưa nhập hoặc không chính xác');
+        }
+    }
+
+    public function viewPassword()
+    {
+        return view('front.account.password');
+    }
+
+    public function changePassword(PasswordRequest $request)
+    {
+        $data = $request->all();
+        $email = auth()->user()->email;
+        $passUser = User::where('email', $email)->first();
+        if (Hash::check($data['password'], $passUser['password'])) {
+            $passUser['password'] = Hash::make($request->passwordNew);
+            $passUser->update();
+            return back()->with('status', 'Đã đổi mật khẩu thành công');
+        } else {
+            return back()->with('status', 'Xác nhận mật khẩu không chính xác');
         }
     }
 }

@@ -37,7 +37,11 @@
 				<span class="login100-form-title p-b-37">
 					Đăng Nhập
 				</span>
-
+				@if (session('message'))
+                    <div class="alert alert-danger">
+                        {{ session('message') }}
+                    </div>
+                @endif
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Vui lòng nhập tên đăng nhập">
 					<input class="input100" type="email" name="email" placeholder="Email đăng nhập" value="{{old('email')}}">
 					<span class="focus-input100"></span>
