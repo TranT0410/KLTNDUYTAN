@@ -50,6 +50,11 @@ Route::prefix('admin')->group(function () {
 
     Route::get('logout', [AuthController::class, 'handleLogout'])
         ->name('admin.logout');
+
+    Route::get('confirm-email', [AuthController::class, 'confirmEmail'])
+        ->name('admin.confirm.email');
+
+    Route::post('confirm-email', [AuthController::class, 'confirmPost']);
 });
 Route::prefix('admin')->middleware('admin.login')->group(function () {
 

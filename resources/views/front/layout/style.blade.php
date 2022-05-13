@@ -34,3 +34,5 @@
 
 	<link rel="stylesheet" type="text/css" href="{{asset('css/categories_styles.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/categories_responsive.css')}}">
+
+	<link rel="stylesheet" type="text/css" href="{{asset('css/password.css')}}">
