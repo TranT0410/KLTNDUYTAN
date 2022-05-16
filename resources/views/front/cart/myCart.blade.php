@@ -55,7 +55,7 @@
                 @endif
                 @endforeach
               </td>
-              <td class="price">{{number_format($row['price'],'0',',','.')}}đ</td>
+              <td class="price">{{number_format($row['price'],'0',',','.')}} VND</td>
               <td class="quantity">
                 <div class="input-group mb-3">
                   @foreach($products as $id_product => $quantity)
@@ -74,7 +74,7 @@
               <?php $rate_product = $row['price']*$row['quantity']*$row['rate']/100 ?>
               <?php $subtotal = $row['price']*$row['quantity'] - $rate_product?>
               <?php $total_cart = $total_cart + $subtotal?>
-              <td class="total">{{number_format($subtotal,'0',',','.')}}đ</td>
+              <td class="total">{{number_format($subtotal,'0',',','.')}} VND</td>
             </tr><!-- END TR-->
           @endforeach
           @endif
@@ -124,16 +124,16 @@
         <h3>Tổng giỏ hàng</h3>
         <p class="d-flex">
           <span>Tổng tiền hàng</span>
-          <span>{{number_format($total_cart,'0',',','.')}}đ</span>
+          <span>{{number_format($total_cart,'0',',','.')}} VND</span>
         </p>
         <p class="d-flex">
           <span>Tổng tiền phí vận chuyển</span>
-          <span>0.00đ</span>
+          <span>0.00 VND</span>
         </p>
         <hr>
         <p class="d-flex total-price">
           <span>Tổng tiền</span>
-          <span>{{number_format($total_cart,'0',',','.')}}đ</span>
+          <span>{{number_format($total_cart,'0',',','.')}} VND</span>
         </p>
       </div>
       <p><a href="{{route('home.checkout')}}" class="btn btn-primary py-3 px-4">Tiến tới thanh toán</a></p>

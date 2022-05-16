@@ -73,7 +73,7 @@
 									<div class="product_info">
 										<h6 class="product_name"><a href="{{route('home.product.detail',$product->id)}}">{{$product->name}}</a></h6>
 										<?php $price_product = number_format($product->price)?>
-										<div class="product_price">{{$price_product}}đ</div>
+										<div class="product_price">{{$price_product}} VND</div>
 									</div>
 									<div class="red_button add_to_cart_button"><a href="{{route('home.cart.add',$product->id)}}">Thêm Vào Giỏ</a></div>
 								</div>
@@ -166,7 +166,7 @@
 										<span>{{$row->rate}}%</span></div>
 									<div class="product_info">
 										<h6 class="product_name"><a href="{{route('home.product.detail',$row->product_id)}}">{{$row->name}}</a></h6>
-										<div class="product_price">{{number_format($row->price - ($row->price*($row->rate)/100),'0',',','.')}}đ<span>{{number_format($row->price,'0',',','.')}}đ</span></div>
+										<div class="product_price">{{number_format($row->price - ($row->price*($row->rate)/100),'0',',','.')}}VND<span>{{number_format($row->price,'0',',','.')}}VND</span></div>
 									</div>
 								</div>
 							</div>

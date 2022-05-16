@@ -35,7 +35,7 @@
                                     <td class="an">{{ $order->Promotion_rate == null ? 0 : $order->Promotion_rate }}%</td>
                                     <?php $subtotal = $order->quantity * $order->price?>
                                     <?php $total = $subtotal - ($subtotal*($order->Promotion_rate)/100)?>
-                                    <td class="an">{{number_format($total,'0',',','.')}}đ</td>
+                                    <td class="an">{{number_format($total,'0',',','.')}} VND</td>
                                 </tr>
                             </tbody>
                         </table>

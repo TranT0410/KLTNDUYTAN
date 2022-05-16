@@ -79,7 +79,7 @@
                   <td>{{$row['id']}}</td>
                   <td>{{$row['name']}}</td>
                   <td>{{$row['quantity']}}</td>
-                  <td>{{number_format($row['price'],'0',',','.')}}đ</td>
+                  <td>{{number_format($row['price'],'0',',','.')}} VND</td>
                   <?php $subtotal = ($row['price']*$row['quantity'])-($row['price']*$row['quantity']*($row['rate']/100)) ?>
                   @if($row['rate'] != null)
                   <td>{{$row['rate']}}%</td>

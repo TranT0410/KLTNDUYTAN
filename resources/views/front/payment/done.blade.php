@@ -11,7 +11,7 @@
       <div class="form-group">
 
           <label >Số tiền:</label>
-          <label><?=number_format($_GET['vnp_Amount']/100) ?> VNĐ</label>
+          <label><?=number_format($_GET['vnp_Amount']/100) ?> VND</label>
       </div>  
       <div class="form-group">
           <label >Nội dung thanh toán:</label>

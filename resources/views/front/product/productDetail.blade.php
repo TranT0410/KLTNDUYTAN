@@ -101,10 +101,10 @@
 						</div> -->
 						@if($product->rate == null)
 						<?php $price = number_format($product->price,'0',',','.')?>
-						<div class="product_price">{{$price}}đ</div>
+						<div class="product_price">{{$price}} VND</div>
 						@else
 						<?php $price =$product->price -($product->price*($product->rate/100)) ?>
-						<div class="product_price">{{number_format($price,'0',',','.')}}đ</div>
+						<div class="product_price">{{number_format($price,'0',',','.')}} VND</div>
 						@endif
 						<ul class="star_rating">
 							<li><i class="fa fa-star" aria-hidden="true"></i></li>
