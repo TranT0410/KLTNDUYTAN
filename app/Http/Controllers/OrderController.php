@@ -186,6 +186,7 @@ class OrderController extends Controller
             ->leftjoin('payment', 'payment.order_id', '=', 'orders.id')
             ->where('orders.username', auth()->user()->name)
             ->where('orders.status', 1)
+            ->latest()
             ->get();
         return view('front.order.orderConfirm', compact('user_orders', 'suppliers'));
     }
@@ -199,6 +200,7 @@ class OrderController extends Controller
             ->join('products', 'order_details.product_id', '=', 'products.id')
             ->leftjoin('payment', 'payment.order_id', '=', 'orders.id')
             ->where('orders.username', auth()->user()->name)
+            ->latest()
             ->get();
         // dd($user_orders);
         return view('front.order.orderAll', compact('user_orders', 'suppliers'));
@@ -214,6 +216,7 @@ class OrderController extends Controller
             ->join('payment', 'payment.order_id', '=', 'orders.id')
             ->where('orders.username', auth()->user()->name)
             ->where('orders.status', 2)
+            ->latest()
             ->get();
         return view('front.order.orderShip', compact('user_orders', 'suppliers'));
     }
@@ -236,6 +239,7 @@ class OrderController extends Controller
             ->join('payment', 'payment.order_id', '=', 'orders.id')
             ->where('orders.username', auth()->user()->name)
             ->where('orders.status', 3)
+            ->latest()
             ->get();
         return view('front.order.orderFinish', compact('user_orders', 'suppliers'));
     }
@@ -248,6 +252,7 @@ class OrderController extends Controller
             ->join('products', 'order_details.product_id', '=', 'products.id')
             ->where('orders.username', auth()->user()->name)
             ->where('status', 4)
+            ->latest()
             ->get();
         return view('front.order.orderBlock', compact('user_orders', 'suppliers'));
     }

@@ -107,6 +107,9 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
         Route::get('list-sales', [StatisticalController::class, 'sales'])
             ->name('supplier.statistical.list');
+
+        Route::get('export', [StatisticalController::class, 'export'])
+            ->name('admin.statistical.export');
     });
     Route::prefix('rate')->group(function () {
         Route::get('list', [RateController::class, 'index'])

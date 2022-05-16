@@ -6,7 +6,7 @@
     <div class="">
       <div class="form-group row">
       <select class="custom-select col-12" name="filter" aria-label="Default select example">
-        <option selected>Tất Cả</option>
+        <option selected value="">Tất Cả</option>
         <option value="monthnow">Tháng Này</option>
         <option value="monthbefore">Tháng Trước</option>
         <option value="year">Năm</option>
@@ -52,7 +52,7 @@
             </div>
             <div class="widget-data">
               <div class="weight-600 font-14">Số Tiền</div>
-              <div class="h4 mb-0">{{number_format($total_price,'0',',','.')}}đ</div>
+              <div class="h4 mb-0">{{number_format($total_price,'0',',','.')}} VND</div>
             </div>
           </div>
         </div>
@@ -66,11 +66,12 @@
             <div class="widget-data">
               <div class="weight-600 font-14">Doanh Thu Webiste </div>
               <?php $total = $total_price*(15/100) ?>
-              <div class="h4 mb-0">{{number_format($total,'0',',','.')}}đ</div>
+              <div class="h4 mb-0">{{number_format($total,'0',',','.')}} VND</div>
             </div>
           </div>
         </div>
       </div>
+      <a href="{{route('admin.statistical.export')}}" class="btn btn-danger">Export</a>
     </div>
   </div>
   </form>
