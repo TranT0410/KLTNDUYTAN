@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">User Add Form</h4>
+                            <h4 class="text-blue h4">Thêm Mới Tài Khoản</h4>
                         </div>
                     </div>
                     <form action="{{ route('admin.user.create') }}" method="post">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name <span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Tài Khoản <span
                                     style="color: red;">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" type="text" placeholder="Name" name="name"
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Password <span style="color: red;">*</span></label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Mật Khẩu <span style="color: red;">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Password" type="password" name="password">
                                 @error('password')
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Confirm Password <span style="color: red;">*</span></label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Xác Nhận Mật Khẩu<span style="color: red;">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Password" type="password" name="confirmPassword">
                                 @error('confirmPassword')
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Address</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Địa Chỉ</label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Address" type="text" name="address"
                                        value="{{ old('address') }}">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Phone</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Số Điện Thoại</label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Phone" type="text" name="phone"
                                        value="{{ old('phone') }}">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Select role</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Chọn Quyền</label>
                             <div class="col-sm-12 col-md-10">
                                 <select class="custom-select col-12" name="role">
                                     <option value="0">User</option>
@@ -84,10 +84,10 @@
                         </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Thêm Mới">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.user.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.user.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

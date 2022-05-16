@@ -11,7 +11,7 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Promotion Detail</h4>
+                        <h4 class="text-blue h4">Chi Tiết Khuyến Mãi</h4>
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
@@ -26,12 +26,12 @@
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Promotion</th>
-                                <th>Product</th>
-                                <th>Rate</th>
-                                <th>Description</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>ID</th>
+                                <th>Tên Khuyến Mãi</th>
+                                <th>Sản Phẩm</th>
+                                <th>Phần Trăm</th>
+                                <th>Mô Tả</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             @foreach($promotion as $row)
@@ -51,11 +51,11 @@
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                   <a class="dropdown-item"
                                                        href="{{route('supplier.promotion.update_product',$row->id)}}"><i
-                                                            class="dw dw-edit2"></i> Edit</a>
+                                                            class="dw dw-edit2"></i> Chỉnh Sửa</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('supplier.promotion.delete_product',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
-                                                            Delete</a>
+                                                            Xóa</a>
                                                 </div>
                                         </div>
                                     </td>

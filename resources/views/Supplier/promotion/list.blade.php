@@ -11,24 +11,24 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Promotion List</h4>
+                        <h4 class="text-blue h4">Danh Sách Khuyến Mãi</h4>
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
-                            <a href="{{route('supplier.promotion.create')}}" class="btn btn-success">Add</a>
+                            <a href="{{route('supplier.promotion.create')}}" class="btn btn-success">Thêm Mới</a>
                         </div>
                     </div>
                     <div class="pb-20">
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Date Start</th>
-                                <th>Date End</th>
-                                <th>Status</th>
-                                <th>Create at</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>STT</th>
+                                <th>Tên Khuyến Mãi</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết Thúc</th>
+                                <th>Trạng Thái</th>
+                                <th>Ngày Tạo</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,19 +50,19 @@
                                                   <a class="dropdown-item" href="{{route('supplier.promotion.view',$row->id)}}
                                                     "><i
                                                 class="dw dw-eye"></i>
-                                            View</a>
+                                            Xem Chi Tiết</a>
                                             <a class="dropdown-item" href="{{route('supplier.promotion.add_product',$row->id)}}
                                                 "><i
                                             class="dw dw-eye"></i>
-                                            Add Product</a>
+                                            Thêm Sản Phẩm</a>
                                             
                                                   <a class="dropdown-item"
                                                        href="{{route('supplier.promotion.edit',$row->id)}}"><i
-                                                            class="dw dw-edit2"></i> Edit</a>
+                                                            class="dw dw-edit2"></i>Chỉnh Sửa</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('supplier.promotion.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
-                                                            Delete</a>
+                                                            Xóa</a>
                                                 </div>
                                         </div>
                                     </td>

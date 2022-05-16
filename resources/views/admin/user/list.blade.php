@@ -11,11 +11,11 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">User List</h4>
+                        <h4 class="text-blue h4">Danh Sách Người Dùng</h4>
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
-                            <a href="{{ route('admin.user.create') }}" class="btn btn-success">Add</a>
+                            <a href="{{ route('admin.user.create') }}" class="btn btn-success">Thêm Mới</a>
                         </div>
                     </div>
                     <div class="pb-20">
@@ -23,12 +23,12 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Tên Người Dùng</th>
                                 <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Role</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>Địa Chỉ</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Quyền</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,13 +55,13 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.show', $user->id) }}"><i
-                                                        class="dw dw-eye"></i> View</a>
+                                                        class="dw dw-eye"></i> Xem</a>
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.edit', $user->id) }}"><i
-                                                        class="dw dw-edit2"></i> Edit</a>
+                                                        class="dw dw-edit2"></i> Cập Nhật</a>
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.delete', $user->id) }}"><i
-                                                        class="dw dw-delete-3"></i> Delete</a>
+                                                        class="dw dw-delete-3"></i> Xóa</a>
                                             </div>
                                         </div>
                                     </td>

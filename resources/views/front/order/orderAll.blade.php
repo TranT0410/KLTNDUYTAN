@@ -1,6 +1,7 @@
 @extends('front.layout.master')
 <link rel="stylesheet" href="{{asset('css/history2.css')}}">
 @section('content')
+
 <div class="container _1QwuCJ">
     <div class="_36cLcR">
         <div class="_1_68zU">

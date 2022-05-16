@@ -37,7 +37,7 @@ class UserRequest extends FormRequest
                     ->uncompromised()
             ],
             'confirmPassword' => 'required|same:password',
-            'phone' => 'required|max:10',
+            'phone' => 'required|max:10|numeric',
             'address' => 'required|max:255',
         ];
     }
@@ -53,6 +53,7 @@ class UserRequest extends FormRequest
             'email.unique' => 'Email đã tồn tại',
             'phone.required' => 'Phone không được để trống',
             'phone.max' => 'Phone không được quá :max kí tự',
+            'phone.numeric' => 'Phone phải là số',
             'password.required' => 'Mật khẩu không được để trống',
             'password.numbers'         => 'Mật khẩu phải chứa 1 chữ cái thường và 1 chữ cái hoa',
             'password.min' => 'Mật khẩu không được nhỏ hơn :min kí tự',

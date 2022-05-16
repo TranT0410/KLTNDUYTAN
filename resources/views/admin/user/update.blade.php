@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">User Edit Form</h4>
+                            <h4 class="text-blue h4">Cập Nhật Người Dùng</h4>
                         </div>
                     </div>
                     <form action="{{ route('admin.user.edit', $user->id) }}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name <span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Người Dùng <span
                                     style="color: red;">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" type="text"  name="name"
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Address</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Địa Chỉ</label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Address" type="text" name="address"
                                        value="{{ $user->address }}">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Phone</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Số Điện Thoại</label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" placeholder="Phone" type="text" name="phone"
                                        value="{{ $user->phone }}">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Select role</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Chọn Quyền</label>
                             <div class="col-sm-12 col-md-10">
                                 <select class="custom-select col-12" name="role">
                                     <option value="0" {{ $user->role === config('constants.role_admin') ? 'selected' : '' }}>
@@ -72,10 +72,10 @@
                         </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Cập Nhật">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.user.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.user.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

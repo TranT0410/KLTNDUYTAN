@@ -11,23 +11,23 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Tax List</h4>
+                        <h4 class="text-blue h4">Danh Sách Thuế</h4>
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
-                            <a href="{{route('admin.tax.create')}}" class="btn btn-success">Add</a>
+                            <a href="{{route('admin.tax.create')}}" class="btn btn-success">Thêm Mới</a>
                         </div>
                     </div>
                     <div class="pb-20">
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Rate</th>
-                                <th>Date Start</th>
-                                <th>Date End</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>STT</th>
+                                <th>Tên Thuế</th>
+                                <th>Phần Trăm</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết Thúc</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,11 +47,11 @@
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                     <a class="dropdown-item"
                                                        href="{{route('admin.tax.update',$row->id)}}"><i
-                                                            class="dw dw-edit2"></i> Edit</a>
+                                                            class="dw dw-edit2"></i> Cập Nhật</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('admin.tax.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
-                                                            Delete</a>
+                                                            Xóa</a>
                                                 </div>
                                         </div>
                                     </td>

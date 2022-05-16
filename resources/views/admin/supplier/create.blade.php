@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Category Add Supplier</h4>
+                            <h4 class="text-blue h4">Danh Sách Nhà Cung Cấp</h4>
                         </div>
                     </div>
                     <form action="{{ route('admin.supplier.create') }}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Nhà Cung Cấp<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" name="name" type="text" >
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-sm-12 col-md-2 col-form-label">Address<span
+                          <label class="col-sm-12 col-md-2 col-form-label">Địa Chỉ<span
                                   style="color:red">*</span></label>
                           <div class="col-sm-12 col-md-10">
                               <input class="form-control" name="address" type="text" >
@@ -33,7 +33,7 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Phone<span
+                        <label class="col-sm-12 col-md-2 col-form-label">Số Điện Thoại<span
                                 style="color:red">*</span></label>
                         <div class="col-sm-12 col-md-10">
                             <input class="form-control" name="phone" type="text" >
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-12 col-md-2 col-form-label">Select User</label>
+                      <label class="col-sm-12 col-md-2 col-form-label">Tài Khoản</label>
                       <div class="col-sm-12 col-md-10">
                           <select class="custom-select col-12" name="user_id">
                                   @foreach($users as $user)
@@ -54,10 +54,10 @@
                   </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Thêm Mới">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

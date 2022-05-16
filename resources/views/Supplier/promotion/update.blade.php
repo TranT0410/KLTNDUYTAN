@@ -12,13 +12,13 @@
                     @endif
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Promotion Edit Form</h4>
+                            <h4 class="text-blue h4">Cập Nhật Khuyến Mãi</h4>
                         </div>
                     </div>
                     <form action="{{ route('supplier.promotion.edit', $promotion->id) }}" method='POST'>
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Khuyến Mãi<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" type="text" name="name" value="{{ $promotion->name }}">
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-sm-12 col-md-2 col-form-label">Date Start<span
+                          <label class="col-sm-12 col-md-2 col-form-label">Ngày Bắt Đầu<span
                                   style="color:red">*</span></label>
                           <div class="col-sm-12 col-md-10">
                               <input class="form-control" name="date_start" type="date" value="{{$promotion->date_start}}" >
@@ -38,7 +38,7 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Date End<span
+                        <label class="col-sm-12 col-md-2 col-form-label">Ngày Kết Thúc<span
                                 style="color:red">*</span></label>
                         <div class="col-sm-12 col-md-10">
                             <input class="form-control" name="date_end" type="date" value="{{$promotion->date_end}}" >
@@ -49,10 +49,10 @@
                     </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Cập Nhật">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

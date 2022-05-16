@@ -288,7 +288,7 @@ Route::prefix('home')->group(function () {
     Route::get('product-detail/{id}', [ProductController::class, 'productDetail'])
         ->name('home.product.detail');
 
-    Route::post('product-detail/{id}', [ProductController::class, 'rate']);
+    Route::post('product-detail/{id}', [ProductController::class, 'rate'])->middleware('admin.login');
 
     Route::get('my-cart', [CartController::class, 'index'])
         ->name('home.cart.list');

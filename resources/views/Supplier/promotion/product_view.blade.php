@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Add Product Promotion</h4>
+                            <h4 class="text-blue h4">Thêm Mới Sản Phẩm Khuyến Mãi</h4>
                         </div>
                     </div>
                     <form action="{{ route('supplier.promotion.add_product',$promotion->id) }}" method="POST" >
                         @csrf
                         <div class="form-group row">
-                          <label class="col-sm-12 col-md-2 col-form-label">Rate<span
+                          <label class="col-sm-12 col-md-2 col-form-label">Phần Trăm Khuyến Mãi<span
                                   style="color:red">*</span></label>
                           <div class="col-sm-12 col-md-10">
                               <input class="form-control" name="rate" type="number" min="0" max="100">
@@ -23,7 +23,7 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Description<span
+                        <label class="col-sm-12 col-md-2 col-form-label">Mô Tả<span
                                 style="color:red">*</span></label>
                         <div class="col-sm-12 col-md-10">
                             <input class="form-control" name="description" type="text">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Select Products</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Chọn Sản Phẩm Khuyến Mãi</label>
                         <div class="col-sm-12 col-md-10">
                             <select class="custom-select col-12" name="product_id">
                               @foreach($products as $product)
@@ -54,10 +54,10 @@
                 </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Thêm Mới">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('supplier.promotion.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('supplier.promotion.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

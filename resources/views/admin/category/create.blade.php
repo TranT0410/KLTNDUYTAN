@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Category Add Form</h4>
+                            <h4 class="text-blue h4">Thêm Danh Mục</h4>
                         </div>
                     </div>
                     <form action="{{ route('admin.category.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Danh Mục<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" name="name" type="text" placeholder="Category name">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Image<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Hình ảnh<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" name="image" type="file" >
@@ -34,10 +34,10 @@
                         </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Thêm Mới">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

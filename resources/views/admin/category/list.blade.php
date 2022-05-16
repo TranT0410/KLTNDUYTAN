@@ -11,12 +11,12 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Category List</h4>
+                        <h4 class="text-blue h4">Danh Sách Danh Mục</h4>
                     </div>
                     <div class="clearfix pd-30">
                         @can('create-category')
                         <div class="pull-left">
-                            <a href="{{route('admin.category.create')}}" class="btn btn-success">Add</a>
+                            <a href="{{route('admin.category.create')}}" class="btn btn-success">Thêm Mới</a>
                         </div>
                         @endcan
                     </div>
@@ -24,11 +24,11 @@
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Create at</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>STT</th>
+                                <th>Tên Danh Mục</th>
+                                <th>Hình Ảnh</th>
+                                <th>Ngày Tạo</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,17 +48,17 @@
                                                     <a class="dropdown-item" href="{{route('admin.category.view',$row->id)}}
                                                                 "><i
                                                             class="dw dw-eye"></i>
-                                                        View</a>
+                                                        Chi Tiết</a>
                                                     @can('edit-category')
                                                     <a class="dropdown-item"
                                                        href="{{route('admin.category.edit',$row->id)}}"><i
-                                                            class="dw dw-edit2"></i> Edit</a>
+                                                            class="dw dw-edit2"></i> Cập Nhật</a>
                                                     @endcan
                                                     @can('delete-category')
                                                         <a class="dropdown-item"
                                                            href="{{route('admin.category.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
-                                                            Delete</a>
+                                                            Xóa</a>
                                                     @endcan
                                                 </div>
                                         </div>

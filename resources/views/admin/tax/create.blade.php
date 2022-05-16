@@ -7,7 +7,7 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Tax Add Form</h4>
+                            <h4 class="text-blue h4">Thêm Thuế</h4>
                         </div>
                     </div>
                     <form action="{{ route('admin.tax.create') }}" method="POST">
@@ -26,7 +26,7 @@
                           <label class="col-sm-12 col-md-2 col-form-label">Phần Trăm Thuế<span
                                   style="color:red">*</span></label>
                           <div class="col-sm-12 col-md-10">
-                              <input class="form-control" name="rate_tax" type="number">
+                              <input class="form-control" name="rate_tax" type="number" min="0">
                               @error('rate_tax')
                               <span style="color:red" ;>{{ $message }}<span>
                               @enderror
@@ -54,10 +54,10 @@
                   </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Thêm Mới">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.tax.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.tax.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

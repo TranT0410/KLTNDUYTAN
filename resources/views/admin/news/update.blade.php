@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">News Update Form</h4>
+                            <h4 class="text-blue h4">Cập Nhật Tin Tức</h4>
                         </div>
                     </div>
                     <form action="{{ route('admin.news.update',$news->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Title<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tiêu Đề<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
 
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Image</label>
+                            <label class="col-sm-12 col-md-2 col-form-label">Hình Ảnh</label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control post-img" type="file" name="image" value="{{$news->image}}">
                                 @error('image')
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Content<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Nội Dung<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                             <textarea class="textarea_editor form-control border-radius-0 post-content"
@@ -45,8 +45,8 @@
                         </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <a href="{{ route('admin.news.list') }}" class="btn btn-dark">Back</a>
-                                <input class="btn btn-primary" name="submit" type="submit" value="Update">
+                                <a href="{{ route('admin.news.list') }}" class="btn btn-dark">Quay Lại</a>
+                                <input class="btn btn-primary" name="submit" type="submit" value="Cập Nhật">
                             </div>
                             {{-- <div class="pull-left">
                                 <div class="btn-list">

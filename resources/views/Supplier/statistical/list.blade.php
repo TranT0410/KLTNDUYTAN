@@ -1,16 +1,28 @@
 @extends('admin.layout.master')
 @section('content')
 <div class="main-container">
+<form action="{{route('supplier.statistical.list')}}" method="GET">
   <div class="pd-ltr-20">
+  <div class="">
+        <div class="form-group row">
+        <select class="custom-select col-12" name="filter" aria-label="Default select example">
+          <option selected>Tất Cả</option>
+          <option value="monthnow">Tháng Này</option>
+          <option value="monthbefore">Tháng Trước</option>
+          <option value="year">Năm</option>
+        </select>
+      </div>
+        <div class="form-group row">
+          <button class="btn btn-success" type="submit">Lọc</button>
+  </div>
+      </div>
+  </div>
     <div class="row">
       <div class="col-xl-3 mb-30">
         <div class="card-box height-100-p widget-style1">
           <div class="d-flex flex-wrap align-items-center">
             <div class="progress-data">
               <div id="chart"></div>
-            </div>
-            <div class="widget-data">
-              <div class="weight-600 font-14">Số lượng đơn hàng</div>
             </div>
             <div class="widget-data">
               <div class="weight-600 font-14">Số lượng đơn hàng</div>
@@ -75,6 +87,7 @@
       </div>
     </div>
   </div>
+</form>
 </div>
 @endsection
 

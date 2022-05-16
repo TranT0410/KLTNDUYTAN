@@ -11,18 +11,18 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Orders List</h4>
+                        <h4 class="text-blue h4">Danh Sách Đơn Hàng</h4>
                     </div>
                     <div class="pb-20">
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Receiver</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>Create at</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>STT</th>
+                                <th>Người Nhận</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Địa Chỉ</th>
+                                <th>Ngày Tạo</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>

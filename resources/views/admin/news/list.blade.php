@@ -11,24 +11,24 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">News List</h4>
+                        <h4 class="text-blue h4">Danh Sách Tin Tức</h4>
                     </div>
                     <div class="clearfix pd-30">
                         <div class="pull-left">
-                            <a href="{{route('admin.news.create')}}" class="btn btn-success">Add</a>
+                            <a href="{{route('admin.news.create')}}" class="btn btn-success">Thêm Mới</a>
                         </div>
                     </div>
                     <div class="pb-20">
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Title</th>
-                                <th>Content</th>
-                                <th>Image</th>
-                                <th>User name</th>
-                                <th>Create at</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>STT</th>
+                                <th>Tiêu Đề</th>
+                                <th>Nội Dung</th>
+                                <th>Hình ảnh</th>
+                                <th>Tác Giả </th>
+                                <th>Ngày Tạo</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,11 +49,11 @@
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                     <a class="dropdown-item"
                                                        href="{{route('admin.news.update',$row->id)}}"><i
-                                                            class="dw dw-edit2"></i> Edit</a>
+                                                            class="dw dw-edit2"></i> Cập Nhật</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('admin.news.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
-                                                            Delete</a>
+                                                            Xóa</a>
                                                 </div>
                                         </div>
                                     </td>

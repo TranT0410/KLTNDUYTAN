@@ -12,13 +12,13 @@
                     @endif
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Product Edit Form</h4>
+                            <h4 class="text-blue h4">Cập Nhật Sản Phẩm</h4>
                         </div>
                     </div>
                     <form action="{{ route('supplier.product.edit', $product->id) }}" method='POST' enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Sản Phẩm<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" type="text" name="name" value="{{ $product->name }}">
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-sm-12 col-md-2 col-form-label">Quantity<span
+                          <label class="col-sm-12 col-md-2 col-form-label">Số Lượng<span
                                   style="color:red">*</span></label>
                           <div class="col-sm-12 col-md-10">
                               <input class="form-control" type="number" min="0" name="quantity" value="{{ $product->quantity}}">
@@ -38,7 +38,7 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Image<span
+                        <label class="col-sm-12 col-md-2 col-form-label">Hình Ảnh<span
                                 style="color:red">*</span></label>
                         <div class="col-sm-12 col-md-10">
                             <input class="form-control" type="file" name="image" value="{{ $product->image }}">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-12 col-md-2 col-form-label">Price<span
+                      <label class="col-sm-12 col-md-2 col-form-label">Đơn giá<span
                               style="color:red">*</span></label>
                       <div class="col-sm-12 col-md-10">
                           <input class="form-control" type="number" min="0" name="price" value="{{ $product->price}}">
@@ -58,7 +58,7 @@
                       </div>
                   </div>
                     <div class="form-group row">
-                      <label class="col-sm-12 col-md-2 col-form-label">Select Category</label>
+                      <label class="col-sm-12 col-md-2 col-form-label">Chọn Danh Mục</label>
                       <div class="col-sm-12 col-md-10">
                           <select class="custom-select col-12" name="category_id">
                                   @foreach($category as $categories)
@@ -69,10 +69,10 @@
                   </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Update">
+                                <input class="btn btn-primary" type="submit" value="Cập Nhật">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('admin.category.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

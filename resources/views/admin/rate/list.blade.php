@@ -11,18 +11,18 @@
                 @endif
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Rate List</h4>
+                        <h4 class="text-blue h4">Danh Sách Đánh Giá</h4>
                     </div>
                     <div class="pb-20">
                         <table class="table stripe hover">
                             <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Username</th>
-                                <th>Rate</th>
-                                <th>Product</th>
-                                <th>Create at</th>
-                                <th class="datatable-nosort">Action</th>
+                                <th>STT</th>
+                                <th>Người Đánh Giá</th>
+                                <th>Nội Dung</th>
+                                <th>Sản Phẩm</th>
+                                <th>Ngày Tạo</th>
+                                <th class="datatable-nosort">Thao Tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -43,11 +43,11 @@
                                                     <a class="dropdown-item" href="{{route('admin.rate.view',$row->id)}}
                                                                 "><i
                                                             class="dw dw-eye"></i>
-                                                        View</a>
+                                                        Chi Tiết</a>
                                                         <a class="dropdown-item"
                                                            href="{{route('admin.rate.delete',$row->id)}}"><i
                                                                 class="dw dw-delete-3"></i>
-                                                            Delete</a>
+                                                            Xóa</a>
                                                     </div>
                                         </div>
                                     </td>

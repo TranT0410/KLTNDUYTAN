@@ -7,13 +7,13 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Add Product</h4>
+                            <h4 class="text-blue h4">Thêm Mới Sản Phẩm</h4>
                         </div>
                     </div>
                     <form action="{{ route('supplier.product.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Name<span
+                            <label class="col-sm-12 col-md-2 col-form-label">Tên Sản Phẩm<span
                                     style="color:red">*</span></label>
                             <div class="col-sm-12 col-md-10">
                                 <input class="form-control" name="name" type="text" value={{old('name')}} >
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                          <label class="col-sm-12 col-md-2 col-form-label">Quantity<span
+                          <label class="col-sm-12 col-md-2 col-form-label">Số Lượng<span
                                   style="color:red">*</span></label>
                           <div class="col-sm-12 col-md-10">
                               <input class="form-control" name="quantity" type="text" >
@@ -33,7 +33,7 @@
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Image<span
+                        <label class="col-sm-12 col-md-2 col-form-label">Hình Ảnh<span
                                 style="color:red">*</span></label>
                         <div class="col-sm-12 col-md-10">
                             <input class="form-control" name="image" type="file" >
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-12 col-md-2 col-form-label">Price<span
+                      <label class="col-sm-12 col-md-2 col-form-label">Đơn Giá<span
                               style="color:red">*</span></label>
                       <div class="col-sm-12 col-md-10">
                           <input class="form-control" name="price" type="text" >
@@ -53,7 +53,7 @@
                       </div>
                   </div>
                     <div class="form-group row">
-                      <label class="col-sm-12 col-md-2 col-form-label">Select Category</label>
+                      <label class="col-sm-12 col-md-2 col-form-label">Chọn Danh Mục</label>
                       <div class="col-sm-12 col-md-10">
                           <select class="custom-select col-12" name="category_id">
                                   @foreach($categories as $category)
@@ -64,10 +64,10 @@
                   </div>
                         <div class="clearfix">
                             <div class="pull-right">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Thêm Mới">
                             </div>
                             <div class="pull-left">
-                                <a href="{{ route('supplier.product.list') }}" class="btn btn-dark">Back</a>
+                                <a href="{{ route('supplier.product.list') }}" class="btn btn-dark">Quay Lại</a>
                             </div>
                         </div>
                     </form>

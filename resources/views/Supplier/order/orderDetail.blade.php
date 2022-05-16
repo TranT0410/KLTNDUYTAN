@@ -6,20 +6,20 @@
             <div class="min-height-200px">
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Order Detail</h4>
+                        <h4 class="text-blue h4">Chi Tiết Đơn Hàng</h4>
                     </div>
                     <div class="pb-20">
                         <table class="table stripe hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Quanlity</th>
-                                <th>Price</th>
-                                <th>Promotion</th>
-                                <th>Total</th>
+                                <th>Danh Mục</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Hình ảnh</th>
+                                <th>Số Lượng</th>
+                                <th>Đơn Giá</th>
+                                <th>Khyến Mãi</th>
+                                <th>Tổng Cộng</th>
                             </tr>
                             </thead>
                             <tbody>
