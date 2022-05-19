@@ -193,7 +193,7 @@
 											<div>
 												<h1>Đánh Giá</h1>
 												<input id="review_name" class="form_input input_name" type="text"
-													name="username" placeholder="Name*" value="{{auth()->user()->name}}" readonly required="required"
+													name="username" placeholder="Name*" value="{{auth()->user() ? auth()->user()->name : ''}}" readonly required="required"
 													data-error="Name is required.">
 												
 											</div>
