@@ -212,18 +212,24 @@ function numberInVietnameseCurrency($num)
                     <span class="_2pSH8O">Đã hủy</span>
                 </a>
             </div>
-        @foreach($user_orders as $row)
+            @foreach($orders as $key => $row)
             <div>
+                @php
+                $total = 0;
+                @endphp
+                
                 <div class="_2n4gHk">
+                    @foreach($user_orders as $k =>$order)
+                    @if($row->id === $order['order_id'])
                     <div>
                         <div class="GuWdvd">
                             <div class="WqnWb-">
                                 <div class="_1DPpu5">
-                                    @foreach($suppliers as $supplier)
+                                    {{-- @foreach($suppliers as $supplier)
                                     @if($supplier->id === $row['supplier_id'])
                                     <div class="_1CIbL0">{{$supplier->name}}</div>
                                     @endif
-                                    @endforeach 
+                                    @endforeach --}}
                                     <div class="_1q53YG">
                                         <button class="stardust-button stardust-button--primary">
                                             <i class="fa fa-comments-o"></i>
@@ -242,7 +248,9 @@ function numberInVietnameseCurrency($num)
                                 </div>
                             </div>
                             <div class="_39XDzv"></div>
+                           
                             <a href="">
+                               
                                 <div class="_2lVoQ1">
                                     <div class="_1limL3">
                                         <div>
@@ -256,7 +264,7 @@ function numberInVietnameseCurrency($num)
 
                                                             </div>
                                                             <div class="lahera-image__content"
-                                                                style="background-image: url({{Storage::url($row->image)}});">
+                                                                style="background-image: url({{Storage::url($order['image'])}});">
                                                                 <div class="lahera-image__content--blur"></div>
                                                             </div>
 
@@ -265,33 +273,40 @@ function numberInVietnameseCurrency($num)
                                                     <div class="_1cxKtp">
                                                         <div>
                                                             <div class="_1xHDVY">
-                                                                <span class="_30COVM">{{$row->name}}</span>
+                                                                <span class="_30COVM">{{$order['name']}}</span>
+                                            
                                                             </div>
                                                         </div>
                                                         <div>
                                                             <div class="y8ewrc"></div>
-                                                            <div class="_2H6lAy">x {{$row->quantity}}</div>
+                                                            <div class="_2H6lAy">x {{$order['quantity']}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php $subtotal = $row->quantity * $row->price?>
+                                                <?php $subtotal = $order['quantity'] * $order['price'];
+                                                    $total = $total + $subtotal;
+                                                ?>
                                                 <div class="_1kvNGb">
                                                     <div>
-                                                        <div class="mBERmM">{{number_format($subtotal,'0',',','.')}} VND</div>
+                                                        <div class="mBERmM">{{number_format($subtotal,'0',',','.')}}VND</div>
                                                     </div>
-                                                    <div class="_1mmoh88">({{numberInVietnameseCurrency($subtotal)}})</div>
                                                 </div>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </a>
                         </div>
                     </div>
+                  
                     <div class="_1J7vLy">
                         <div class="DI-rNr tyOBoQ"></div>
                         <div class="DI-rNr _25igL4"></div>
                     </div>
+                    @endif
+                    @endforeach
+                    @if($total > 0)
                     <div class="_37UAJO">
                         <div class="_1CH8fe">
                             <span class="zO5iWv">
@@ -301,8 +316,9 @@ function numberInVietnameseCurrency($num)
                             </span>
                             <div class="_1mmoh8">Tổng số tiền:
                             </div>
-                            <div class="_1MS3t2">{{number_format($subtotal,'0',',','.')}}đ</div>
+                            <div class="_1MS3t2">{{number_format($total,'0',',','.')}} VND</div>
                         </div>
+                        <div class="_1mmoh88">({{numberInVietnameseCurrency($total)}})</div>
                     </div>
                     <div class="_1Qn42s">
                         <div class="_1lM63-">
@@ -323,6 +339,7 @@ function numberInVietnameseCurrency($num)
                             @endif
                         </div>
                     </div>
+                @endif
                 </div>
             </div>
             @endforeach
@@ -331,4 +348,3 @@ function numberInVietnameseCurrency($num)
 
 </div>
 @endsection
-          
