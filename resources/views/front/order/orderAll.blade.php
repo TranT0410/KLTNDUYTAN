@@ -243,9 +243,7 @@ function numberInVietnameseCurrency($num)
                                         </button>
                                     </a>
                                 </div>
-                                <div class="_1lE6Rh">
-                                    <div class="clakWe">Chờ xác nhận</div>
-                                </div>
+                                
                             </div>
                             <div class="_39XDzv"></div>
                            
