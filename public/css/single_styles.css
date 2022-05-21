@@ -1144,13 +1144,13 @@ section
 .tabs_section_container
 {
 	width: 100%;
-	padding-bottom: 80px;
-	border-bottom: solid 1px #ebebeb;
+	/* padding-bottom: 80px; */
+	/* border-bottom: solid 1px #ebebeb; */
 }
 .tabs_container
 {
-	margin-top: 66px;
-	margin-bottom: 66px;
+	margin-top: 20px;
+	margin-bottom: 35px;
 }
 .tabs
 {
@@ -1164,6 +1164,8 @@ section
 .tab:last-child
 {
 	margin-right: 0px;
+    font-size: 40px;
+	color: #dda89e;
 }
 .tab span
 {

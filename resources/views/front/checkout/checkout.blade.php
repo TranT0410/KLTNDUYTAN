@@ -1,163 +1,192 @@
 @extends('front.layout.master')
-
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap4/bootstrap.min.css')}}">
+<link href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/animate.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/themify-icons/themify-icons.css')}}">
+<link rel="stylesheet" href="{{asset('css/animate.css')}}">
+<link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.css')}}">
+<link rel="stylesheet" href="{{asset('css/aos.css')}}">
+<link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+<link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
+<link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+@endsection
 @section('content')
 <section class="ftco-section">
-<form method="POST" action="{{route('order.create')}}">
-  @csrf
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xl-5 ftco-animate">
-        <form action="#" class="billing-form">
-          <h3 class="mb-4 billing-heading">THÔNG TIN HÓA ĐƠN</h3>
-          <div class="row align-items-end">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="firstname">Tên tài khoản</label>
-                <input type="text" name="username" class="form-control" placeholder="" value="{{auth()->user()->name}}" readonly>
-              </div>
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="lastname">Tên người nhận</label>
-                <input type="text" name="receiver" class="form-control" placeholder="" value="{{old('receiver')}}">
-              </div>
-              @error('receiver')
-              <span style="color:red">{{$message}}</span>
-              @enderror
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="lastname">Địa chỉ nhận hàng</label>
-                <input type="text" name="address" class="form-control" placeholder="" value="{{old('address')}}">
-              </div>
-              @error('address')
-              <span style="color:red">{{$message}}</span>
-              @enderror
-            </div>
+    <form method="POST" action="{{route('order.create')}}">
+        @csrf
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 ftco-animate">
+                    <form action="#" class="billing-form">
+                        <h3 class="mb-4 billing-heading">THÔNG TIN HÓA ĐƠN</h3>
+                        <div class="row align-items-end">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="firstname">Tên tài khoản</label>
+                                    <input type="text" name="username" class="form-control" placeholder=""
+                                        value="{{auth()->user()->name}}" readonly>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="lastname">Tên người nhận</label>
+                                    <input type="text" name="receiver" class="form-control" placeholder=""
+                                        value="{{old('receiver')}}">
+                                </div>
+                                @error('receiver')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="lastname">Địa chỉ nhận hàng</label>
+                                    <input type="text" name="address" class="form-control" placeholder=""
+                                        value="{{old('address')}}">
+                                </div>
+                                @error('address')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
+                            </div>
 
-            <div class="w-100"></div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="phone">Số điện thoại</label>
-                <input type="text" name="phone" class="form-control" placeholder="" value="{{old('phone')}}">
-              </div>
-              @error('phone')
-              <span style="color:red">{{$message}}</span>
-              @enderror
-            </div>
-            <div class="col-md-12">
-              <div class="form-group mt-4">
-                <label for="note">Ghi chú</label>
-                <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
-              </div>
-            </div>
-          </div>
-        </form><!-- END -->
-      </div>
-      <div class="col-xl-7 ftco-animate">
-        <div class="row">
-          <h3 class="mb-4 billing-heading" style="padding-left: 15px;">THÔNG TIN ĐƠN HÀNG</h3>
-          <div class="col-md-12 d-flex mb-5">
+                            <div class="w-100"></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone">Số điện thoại</label>
+                                    <input type="text" name="phone" class="form-control" placeholder=""
+                                        value="{{old('phone')}}">
+                                </div>
+                                @error('phone')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mt-4">
+                                    <label for="note">Ghi chú</label>
+                                    <textarea name="description" id="" cols="30" rows="10"
+                                        class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form><!-- END -->
+                </div>
+                <div class="col-xl-7 ftco-animate">
+                    <div class="row">
+                        <h3 class="mb-4 billing-heading" style="padding-left: 15px;">THÔNG TIN ĐƠN HÀNG</h3>
+                        <div class="col-md-12 d-flex mb-5">
 
-            <table class="table text-dark " style="margin-top: 35px;">
-              <thead>
-                <tr>
-                  <th scope="col">Mã</th>
-                  <th scope="col">Sản phẩm</th>
-                  <th scope="col">Số lượng</th>
-                  <th scope="col">Đơn giá</th>
-                  <th scope="col">Khuyến Mãi</th>
-                  <th scope="col">Thành tiền</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php $total_product = 0?>
-              @foreach($mycart as $id =>$row)
-                <tr>
-                  <td>{{$row['id']}}</td>
-                  <td>{{$row['name']}}</td>
-                  <td>{{$row['quantity']}}</td>
-                  <td>{{number_format($row['price'],'0',',','.')}} VND</td>
-                  <?php $subtotal = ($row['price']*$row['quantity'])-($row['price']*$row['quantity']*($row['rate']/100)) ?>
-                  @if($row['rate'] != null)
-                  <td>{{$row['rate']}}%</td>
-                  @else
-                  <td>0%</td>
-                  @endif
-                  <td>{{number_format($subtotal,'0',',','.')}}</td>
-                  <?php $total_product = $total_product + $subtotal ?>
-                </tr>
-              @endforeach
-              </tbody>
-              <tfoot class="text-left mt-3">
-                <tr class="shipping">
-                  <th>Giao nhận</th>
-                  <td colspan="4" class="text-right">Miễn phí</td>
+                            <table class="table text-dark " style="margin-top: 35px;">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Mã</th>
+                                        <th scope="col">Sản phẩm</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Đơn giá</th>
+                                        <th scope="col">Khuyến Mãi</th>
+                                        <th scope="col">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $total_product = 0?>
+                                    @foreach($mycart as $id =>$row)
+                                    <tr>
+                                        <td>{{$row['id']}}</td>
+                                        <td>{{$row['name']}}</td>
+                                        <td>{{$row['quantity']}}</td>
+                                        <td>{{number_format($row['price'],'0',',','.')}} VND</td>
+                                        <?php $subtotal = ($row['price']*$row['quantity'])-($row['price']*$row['quantity']*($row['rate']/100)) ?>
+                                        @if($row['rate'] != null)
+                                        <td>{{$row['rate']}}%</td>
+                                        @else
+                                        <td>0%</td>
+                                        @endif
+                                        <td>{{number_format($subtotal,'0',',','.')}}</td>
+                                        <?php $total_product = $total_product + $subtotal ?>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot class="text-left mt-3">
+                                    <tr class="shipping">
+                                        <th>Giao nhận</th>
+                                        <td colspan="4" class="text-right">Miễn phí</td>
 
-                </tr>
-                
+                                    </tr>
 
-                <tr class="order-total">
-                  <th>Thuế - {{$tax->name}}</th>
-                  <td colspan="4" class="text-right">{{$tax->rate_tax}}%</td>
-                </tr>
-                <?php $total_order = $total_product + ($total_product*($tax->rate_tax)/100)  ?>
-                <tr>
-                  <th>Thanh toán</th>
-                  <?php session()->get('price_payment');
+
+                                    <tr class="order-total">
+                                        <th>Thuế - {{$tax->name}}</th>
+                                        <td colspan="4" class="text-right">{{$tax->rate_tax}}%</td>
+                                    </tr>
+                                    <?php $total_order = $total_product + ($total_product*($tax->rate_tax)/100)  ?>
+                                    <tr>
+                                        <th>Thanh toán</th>
+                                        <?php session()->get('price_payment');
                         session()->put('price_payment',$total_order)?>
-                  <td colspan="4" class="text-right">{{number_format($total_order,'0',',','.')}}₫</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-          <div class="col-md-12">
-            <div class="cart-detail p-3 p-md-4">
-              <h3 class="billing-heading mb-4">Phương thức thanh toán</h3>
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="radio">
-                    <label><input type="radio" name="optradio" value="0" class="mr-2">Thanh toán khi nhận
-                      hàng</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="radio">
-                    <label><input type="radio" name="optradio" value="1" class="mr-2">Thanh toán trực
-                      tuyến</label>
-                  </div>
-                </div>
-              </div>
-              @error('optradio')
-              <span style="color:red">{{$message}}</span>
-              @enderror
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="checkbox">
-                    <label><input type="checkbox" name="checkbox" value="1" class="mr-2">Tôi đồng ý hết tất cả điều khoản dịch vụ! </label>
-                  </div>
-                  @error('checkbox')
-              <span style="color:red">{{$message}}</span>
-              @enderror
-                </div>
-              </div>
-              <div class="payment-box">
-                Phí thu hộ: 0 VNĐ. Ưu đãi về phí vận chuyển (nếu có) áp dụng cả với phí thu hộ. <br>
-                - Chỉ nhận hàng khi đơn hàng ở trạng thái "ĐANG GIAO HÀNG". <br>
-                - Lưu ý kiểm tra mã đơn hàng, mã vận đơn và người gửi TRƯỚC KHI THANH TOÁN.
-              </div>
-              <input type="submit" class="btn btn-primary py-3 px-4" value="ĐẶT HÀNG">
-              </p>
+                                        <td colspan="4" class="text-right">{{number_format($total_order,'0',',','.')}}₫
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart-detail p-3 p-md-4">
+                                <h3 class="billing-heading mb-4">Phương thức thanh toán</h3>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="0" class="mr-2">Thanh toán
+                                                khi nhận
+                                                hàng</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="1" class="mr-2">Thanh toán
+                                                trực
+                                                tuyến</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                @error('optradio')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="checkbox" value="1" class="mr-2">Tôi
+                                                đồng ý hết tất cả điều khoản dịch vụ! </label>
+                                        </div>
+                                        @error('checkbox')
+                                        <span style="color:red">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="payment-box">
+                                    Phí thu hộ: 0 VNĐ. Ưu đãi về phí vận chuyển (nếu có) áp dụng cả với phí thu hộ. <br>
+                                    - Chỉ nhận hàng khi đơn hàng ở trạng thái "ĐANG GIAO HÀNG". <br>
+                                    - Lưu ý kiểm tra mã đơn hàng, mã vận đơn và người gửi TRƯỚC KHI THANH TOÁN.
+                                </div>
+                                <input type="submit" class="btn btn-primary py-3 px-4" value="ĐẶT HÀNG">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .col-md-8 -->
             </div>
-          </div>
         </div>
-      </div> <!-- .col-md-8 -->
-    </div>
-  </div>
-</form>
-</section> <!-- .section -->
+    </form>
+</section>
+<!-- .section -->
 @endsection

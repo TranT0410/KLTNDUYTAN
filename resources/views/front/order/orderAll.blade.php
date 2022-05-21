@@ -1,5 +1,18 @@
 @extends('front.layout.master')
+@section('css')
 <link rel="stylesheet" href="{{asset('css/history2.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('css/account.css')}}"> -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap4/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/animate.css')}}">
+<link href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
+<link
+    href="{{asset('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap')}}"
+    rel="stylesheet">
+@endsection
 @section('content')
 <?php
 function numInWords($num)
@@ -195,29 +208,29 @@ function numberInVietnameseCurrency($num)
     </div>
     <div class="_3D9BVC">
         <div class="_2mSi0S">
-					<div class="ZS1kj6">
-						<a class="_2sowby  _23VQQX" href="{{route('home.orders_all')}}">
-							<span class="_2pSH8O">Tất cả</span>
-						</a>
-						<a class="_2sowby " href="{{route('home.orders_confirm')}}">
-							<span class="_2pSH8O">Chờ xác nhận</span>
-						</a>
-						<a class="_2sowby" href="{{route('home.orders_ship')}}">
-							<span class="_2pSH8O">Đang giao</span>
-						</a>
-						<a class="_2sowby" href="{{route('home.orders_finish')}}">
-							<span class="_2pSH8O">Đã giao</span>
-						</a>
-						<a class="_2sowby" href="{{route('home.orders_block')}}">
-							<span class="_2pSH8O">Đã hủy</span>
-						</a>
-					</div>
-        	@foreach($orders as $key => $row)
+            <div class="ZS1kj6">
+                <a class="_2sowby  _23VQQX" href="{{route('home.orders_all')}}">
+                    <span class="_2pSH8O">Tất cả</span>
+                </a>
+                <a class="_2sowby " href="{{route('home.orders_confirm')}}">
+                    <span class="_2pSH8O">Chờ xác nhận</span>
+                </a>
+                <a class="_2sowby" href="{{route('home.orders_ship')}}">
+                    <span class="_2pSH8O">Đang giao</span>
+                </a>
+                <a class="_2sowby" href="{{route('home.orders_finish')}}">
+                    <span class="_2pSH8O">Đã giao</span>
+                </a>
+                <a class="_2sowby" href="{{route('home.orders_block')}}">
+                    <span class="_2pSH8O">Đã hủy</span>
+                </a>
+            </div>
+            @foreach($orders as $key => $row)
             <div>
                 @php
                 $total = 0;
                 @endphp
-                
+
                 <div class="_2n4gHk">
                     @foreach($user_orders as $k =>$order)
                     @if($row->id === $order['order_id'])
@@ -228,122 +241,122 @@ function numberInVietnameseCurrency($num)
                                     {{-- @foreach($suppliers as $supplier)
                                     @if($supplier->id === $row['supplier_id'])
                                     <div class="_1CIbL0">{{$supplier->name}}</div>
-                                    @endif
-                                    @endforeach --}}
-                                    <div class="_1q53YG">
-                                        <button class="stardust-button stardust-button--primary">
-                                            <i class="fa fa-comments-o"></i>
-                                            <span>chat</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="_2L5VLu">
-                                        <button class="stardust-button">
-                                            <i style="color: #adb5bd;" class="fas fa-store"></i>
-                                            <span>xem shop</span>
-                                        </button>
-                                    </a>
+                                @endif
+                                @endforeach --}}
+                                <div class="_1q53YG">
+                                    <button class="stardust-button stardust-button--primary">
+                                        <i class="fa fa-comments-o"></i>
+                                        <span>chat</span>
+                                    </button>
                                 </div>
-                                
+                                <a href="" class="_2L5VLu">
+                                    <button class="stardust-button">
+                                        <i style="color: #adb5bd;" class="fas fa-store"></i>
+                                        <span>xem shop</span>
+                                    </button>
+                                </a>
                             </div>
-                            <div class="_39XDzv"></div>
-                           
-                            <a href="">
-                               
-                                <div class="_2lVoQ1">
-                                    <div class="_1limL3">
-                                        <div>
-                                            <span class="_1BJEKe">
-                                                <div></div>
-                                                <div class="_3huAcN">
-                                                    <div class="_3btL3m">
-                                                        <div class="lahera-image__wrapper">
-                                                            <div class="lahera-image__place-holder">
-                                                                <i class="fal fa-images"></i>
 
-                                                            </div>
-                                                            <div class="lahera-image__content"
-                                                                style="background-image: url({{Storage::url($order['image'])}});">
-                                                                <div class="lahera-image__content--blur"></div>
-                                                            </div>
+                        </div>
+                        <div class="_39XDzv"></div>
+
+                        <a href="">
+
+                            <div class="_2lVoQ1">
+                                <div class="_1limL3">
+                                    <div>
+                                        <span class="_1BJEKe">
+                                            <div></div>
+                                            <div class="_3huAcN">
+                                                <div class="_3btL3m">
+                                                    <div class="lahera-image__wrapper">
+                                                        <div class="lahera-image__place-holder">
+                                                            <i class="fal fa-images"></i>
 
                                                         </div>
-                                                    </div>
-                                                    <div class="_1cxKtp">
-                                                        <div>
-                                                            <div class="_1xHDVY">
-                                                                <span class="_30COVM">{{$order['name']}}</span>
-                                            
-                                                            </div>
+                                                        <div class="lahera-image__content"
+                                                            style="background-image: url({{Storage::url($order['image'])}});">
+                                                            <div class="lahera-image__content--blur"></div>
                                                         </div>
-                                                        <div>
-                                                            <div class="y8ewrc"></div>
-                                                            <div class="_2H6lAy">x {{$order['quantity']}}</div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
-                                                <?php $subtotal = $order['quantity'] * $order['price'];
+                                                <div class="_1cxKtp">
+                                                    <div>
+                                                        <div class="_1xHDVY">
+                                                            <span class="_30COVM">{{$order['name']}}</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="y8ewrc"></div>
+                                                        <div class="_2H6lAy">x {{$order['quantity']}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php $subtotal = $order['quantity'] * $order['price'];
                                                     $total = $total + $subtotal;
                                                 ?>
-                                                <div class="_1kvNGb">
-                                                    <div>
-                                                        <div class="mBERmM">{{number_format($subtotal,'0',',','.')}}VND</div>
+                                            <div class="_1kvNGb">
+                                                <div>
+                                                    <div class="mBERmM">{{number_format($subtotal,'0',',','.')}}VND
                                                     </div>
                                                 </div>
-                                            </span>
-                                        </div>
+                                            </div>
+                                        </span>
                                     </div>
                                 </div>
-                                
-                            </a>
-                        </div>
-                    </div>
-                  
-                    <div class="_1J7vLy">
-                        <div class="DI-rNr tyOBoQ"></div>
-                        <div class="DI-rNr _25igL4"></div>
-                    </div>
-                    @endif
-                    @endforeach
-                    @if($total > 0)
-                    <div class="_37UAJO">
-                        <div class="_1CH8fe">
-                            <span class="zO5iWv">
-                                <div class="_-8oSuS">
-                                    <i class="fa fa-shield"></i>
-                                </div>
-                            </span>
-                            <div class="_1mmoh8">Tổng số tiền:
                             </div>
-                            <div class="_1MS3t2">{{number_format($total,'0',',','.')}} VND</div>
-                        </div>
-                        <div class="_1mmoh88">({{numberInVietnameseCurrency($total)}})</div>
+
+                        </a>
                     </div>
-                    <div class="_1Qn42s">
-                        <div class="_1lM63-">
-                            <span class="_2xFj47">
-                                <div class="lahera-drawer">
-                                </div>
-                            </span>
-                        </div>
-                        <div class="_23TzMz">
-                            @if($row['status'] !=null )
-                            <div class="_2BTXui">
-                                <button class="stardust-button stardust-button--primary _2x5SvJ">Đã Thanh Toán</button>
-                            </div>
-                            @else
-                            <div class="_2BTXui">
-                                <button class="stardust-button stardust-button--primary _2x5SvJ">Chưa Thanh Toán</button>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                @endif
                 </div>
+
+                <div class="_1J7vLy">
+                    <div class="DI-rNr tyOBoQ"></div>
+                    <div class="DI-rNr _25igL4"></div>
+                </div>
+                @endif
+                @endforeach
+                @if($total > 0)
+                <div class="_37UAJO">
+                    <div class="_1CH8fe">
+                        <span class="zO5iWv">
+                            <div class="_-8oSuS">
+                                <i class="fa fa-shield"></i>
+                            </div>
+                        </span>
+                        <div class="_1mmoh8">Tổng số tiền:
+                        </div>
+                        <div class="_1MS3t2">{{number_format($total,'0',',','.')}} VND</div>
+                    </div>
+                    <div class="_1mmoh88">({{numberInVietnameseCurrency($total)}})</div>
+                </div>
+                <div class="_1Qn42s">
+                    <div class="_1lM63-">
+                        <span class="_2xFj47">
+                            <div class="lahera-drawer">
+                            </div>
+                        </span>
+                    </div>
+                    <div class="_23TzMz">
+                        @if($row['status'] !=null )
+                        <div class="_2BTXui">
+                            <button class="stardust-button stardust-button--primary _2x5SvJ">Đã Thanh Toán</button>
+                        </div>
+                        @else
+                        <div class="_2BTXui">
+                            <button class="stardust-button stardust-button--primary _2x5SvJ">Chưa Thanh Toán</button>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+                @endif
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
+</div>
 
 </div>
 @endsection
-          
