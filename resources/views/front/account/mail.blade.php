@@ -1,4 +1,5 @@
-Xin chào bạn,Đây là mã email xác nhận tài khoản của hệ thống
+<p>
+    Xin chào bạn,Đây là mã email xác nhận tài khoản của hệ thống
 </p>
 <?php $dataEmail = session('email'); ?>
 <p>
