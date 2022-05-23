@@ -71,8 +71,23 @@
           </div>
         </div>
       </div>
-      <a href="{{route('admin.statistical.export')}}" class="btn btn-danger">Export</a>
+      <div class="col-xl-3 mb-30">
+        <div class="card-box height-100-p widget-style1">
+          <div class="d-flex flex-wrap align-items-center">
+            <div class="progress-data">
+              <div id="chart4"></div>
+            </div>
+            <div class="widget-data">
+              <div class="weight-600 font-14">Thuế Nhà Nước </div>
+              <?php $total = $total_price*($tax->rate_tax/100) ?>
+              <div class="h4 mb-0">{{number_format($total,'0',',','.')}} VND</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <a href="{{route('admin.statistical.export')}}" class="btn btn-danger">Export</a>
+
   </div>
   </form>
 </div>

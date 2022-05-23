@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/password.css')}}">
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 @endsection
 

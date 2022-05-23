@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Tax;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -56,9 +57,9 @@ class StatisticalController extends Controller
             $total_price = $total_price + $subtotal;
         }
         $countFinish = count($orderFinish);
+        $tax = Tax::select('rate_tax')->first();
 
-
-        return view('admin.statistical.list', compact('countFinish', 'order_count', 'orderFinish', 'total_price'));
+        return view('admin.statistical.list', compact('countFinish', 'order_count', 'orderFinish', 'total_price', 'tax'));
     }
 
     public function sales(Request $request)
@@ -156,7 +157,7 @@ class StatisticalController extends Controller
     public function export(Request $request)
     {
         $list[] = [
-            'Finish', 'Total', 'Money', 'WebSite'
+            'Finish', 'Total', 'Money', 'WebSite', 'Tax'
         ];
 
         $filter = $request->filter;
@@ -206,8 +207,10 @@ class StatisticalController extends Controller
         }
         $countFinish = count($orderFinish);
         $money = $total_price * (15 / 100);
+        $tax = Tax::select('rate_tax')->first();
+        $taxMoney = $total_price * $tax->rate_tax;
         $list[] = [
-            $countFinish, $order_count, $total_price, $money
+            $countFinish, $order_count, $total_price, $money, $taxMoney
         ];
 
         $filename = 'file.csv';

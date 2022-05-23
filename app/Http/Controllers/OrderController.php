@@ -17,15 +17,16 @@ class OrderController extends Controller
 {
     public function ordersNew()
     {
-        $orders = DB::table('orders')
-            ->join('order_details', 'orders.id', '=', 'order_details.order_id')
+        $orders = Order::join('order_details', 'orders.id', '=', 'order_details.order_id')
             ->join('products', 'order_details.product_id', '=', 'products.id')
             ->join('suppliers', 'suppliers.id', '=', 'products.supplier_id')
             ->where('suppliers.id', auth()->user()->suppliers->id)
             ->where('orders.status', 1)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
             ->orderByDesc('created_at')
-            ->get();
+            ->get()
+            ->unique('id');
+        // dd($orders);
         return view('supplier.order.listOrderNew', compact('orders'));
     }
 
@@ -48,7 +49,8 @@ class OrderController extends Controller
             ->where('orders.status', 2)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
             ->orderByDesc('created_at')
-            ->get();
+            ->get()
+            ->unique('id');;
         return view('supplier.order.listOrderShipping', compact('orders'));
     }
 
@@ -62,7 +64,8 @@ class OrderController extends Controller
             ->where('orders.status', 3)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
             ->orderByDesc('created_at')
-            ->get();
+            ->get()
+            ->unique('id');
 
         return view('supplier.order.listOrderShiped', compact('orders'));
     }
@@ -111,7 +114,8 @@ class OrderController extends Controller
             ->where('orders.status', 4)
             ->select('orders.id', 'orders.receiver', 'orders.phone', 'orders.address', 'products.name', 'orders.created_at')
             ->orderByDesc('created_at')
-            ->get();
+            ->get()
+            ->unique('id');
 
         return view('supplier.order.listOrderBlock', compact('orders'));
     }

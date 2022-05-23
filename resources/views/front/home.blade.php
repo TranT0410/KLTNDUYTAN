@@ -204,20 +204,8 @@
                             </div>
                             @endif
                             @endforeach
-                            <!-- Slide 2 -->
-
-
-
-                            <!-- Slider Navigation -->
-
-                            <div
-                                class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
-                                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                            </div>
-                            <div
-                                class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </div>
+                     
+                           
                         </div>
                     </div>
                 </div>

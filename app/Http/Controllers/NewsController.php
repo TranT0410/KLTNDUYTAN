@@ -23,6 +23,7 @@ class NewsController extends Controller
     public function store(NewsRequest $request)
     {
         $data = $request->all();
+
         if ($request->has('image')) {
             $file = $request->file('image');
             $data['image'] = $file->store('images/news', 'images');
@@ -36,12 +37,14 @@ class NewsController extends Controller
     public function update($id)
     {
         $news = News::find($id);
+
         return view('admin.news.update', compact('news'));
     }
     public function edit($id, Request $request)
     {
         $data = $request->all();
         $news = News::find($id);
+
         if ($request->has('image')) {
             $file = $request->file('image');
             $data['image'] = $file->store('images/news', 'images');
@@ -55,6 +58,7 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         $news->delete();
+
         return redirect(route('admin.news.list'))->with('status', 'Xóa tin tức thành công!');
     }
 
