@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Alert;
 
 class CartController extends Controller
 {
@@ -39,7 +40,7 @@ class CartController extends Controller
             ];
         }
         session()->put('my_cart', $cart);
-        return redirect()->back()->with('success', 'Sản phẩm được thêm vào giỏ hàng thành công!');
+        return redirect()->back()->with('success', 'Thêm sản phẩm thành công');
     }
 
     public function updateCart(Request $request)

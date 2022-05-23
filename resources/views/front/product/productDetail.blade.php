@@ -140,7 +140,7 @@
                     <div class="product_favorite d-flex flex-column align-items-center justify-content-center">
                     </div>
                     <div class="red_button add_to_cart_button" style="opacity: 1;visibility:visible"><a
-                            href="{{route('home.cart.add',$product->id)}}">Thêm Giỏ Hàng</a></div>
+                            href="{{route('home.cart.add',$product->id)}}" onClick="cl()">Thêm Giỏ Hàng</a></div>
 
                 </div>
             </div>
@@ -159,7 +159,7 @@
                     <ul
                         class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
                         <li class="tab" data-active-tab="tab_3">
-                            <spans>Đánh Giá
+                            <span>Đánh Giá
                                 </span>
                         </li>
                         <!-- <li class="tab" data-active-tab="tab_1"><span>Mô Tả </span></li>
@@ -261,5 +261,13 @@
 
 </div>
 
-
 @endsection
+<script>
+    function cl () {
+        Swal.fire(
+  'Thêm Sản Phẩm Vào Giỏ Thành Công!',
+  'Click!',
+  'success'
+)
+    }
+</script>

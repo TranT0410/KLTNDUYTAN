@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 @section('content')
 
@@ -100,7 +101,7 @@
 
                         </div>
                         <div class="red_button add_to_cart_button"><a
-                                href="{{route('home.cart.add',$product->id)}}">Thêm Vào Giỏ</a>
+                                href="{{route('home.cart.add',$product->id)}}" onClick="cl()">Thêm Vào Giỏ</a>
                         </div>
                     </div>
                     @endif
@@ -251,7 +252,16 @@
                         </div>
                     </div>
                     @endforeach
-                    </d iv>
+                    </div>
                 </div>
             </div>
             @endsection
+<script>
+    function cl () {
+        Swal.fire(
+  'Thêm Sản Phẩm Vào Giỏ Thành Công!',
+  'Click!',
+  'success'
+)
+    }
+</script>

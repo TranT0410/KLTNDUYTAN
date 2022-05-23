@@ -22,11 +22,13 @@ class HomeController extends Controller
                 ->leftJoin('promotion_detail', 'promotion_detail.product_id', '=', 'products.id')
                 ->where('category_id', $id)
                 ->where('products.quantity', '>', 0)
+                ->latest()
                 ->paginate(config('constants.paginate_10'));
         } else {
             $products = Product::select('products.*', 'promotion_detail.rate',  'promotion_detail.product_id')
                 ->leftJoin('promotion_detail', 'promotion_detail.product_id', '=', 'products.id')
                 ->where('products.quantity', '>', 0)
+                ->latest()
                 ->paginate(config('constants.paginate_10'));
         }
         $news = News::all();

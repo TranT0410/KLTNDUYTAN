@@ -23,6 +23,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @foreach ($orders as $order)
                                 <tr>
                                     <td class="an">{{ $order->id }}</td>
                                     <td class="an">{{ $order->categories->name }}</td>
@@ -37,6 +38,7 @@
                                     <?php $total = $subtotal - ($subtotal*($order->Promotion_rate)/100)?>
                                     <td class="an">{{number_format($total,'0',',','.')}} VND</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -119,14 +119,14 @@ class OrderController extends Controller
     public function orderDetail($id)
     {
         $supplier_id = auth()->user()->suppliers->id;
-        $order = OrderDetail::select('order_details.*')
+        $orders = OrderDetail::select('order_details.*')
             ->join('products', 'order_details.product_id', '=', 'products.id')
             ->join('suppliers', 'products.supplier_id', '=', 'suppliers.id')
             ->where('order_details.order_id', $id)
             ->where('suppliers.id', $supplier_id)
-            ->first();
+            ->get();
 
-        return view('supplier.order.orderDetail', compact('order'));
+        return view('supplier.order.orderDetail', compact('orders'));
     }
 
     public function checkOut()
