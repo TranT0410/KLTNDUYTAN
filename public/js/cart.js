@@ -37,7 +37,7 @@ $(".product-remove").click(function (e) {
   var ele = $(this);
   var route = $(this).attr("route");
   var id_product = ele.attr("data-id");
-  if(confirm("Are you sure want to remove?")) {
+  if(confirm("Bạn chắc chắn muốn xóa sản phẩm?")) {
       $.ajax({
           url: route ,
           method: "DELETE",
