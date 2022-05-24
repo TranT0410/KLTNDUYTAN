@@ -22,7 +22,7 @@
         <div class="card-box height-100-p widget-style1">
           <div class="d-flex flex-wrap align-items-center">
             <div class="progress-data">
-              <div id="chart"></div>
+              <div id="chart" style="font-size:65px"><i class="fa-solid fa-pager"></i></div>
             </div>
             <div class="widget-data">
               <div class="weight-600 font-14">Số lượng đơn hàng</div>
@@ -35,7 +35,7 @@
         <div class="card-box height-100-p widget-style1">
           <div class="d-flex flex-wrap align-items-center">
             <div class="progress-data">
-              <div id="chart2"></div>
+              <div id="chart2"style="font-size:65px"><i class="fa-solid fa-circle-check"></i></div>
             </div>
             <div class="widget-data">
               <div class="weight-600 font-14">Số đơn hàng đã hoàn thành</div>
@@ -48,7 +48,7 @@
         <div class="card-box height-100-p widget-style1">
           <div class="d-flex flex-wrap align-items-center">
             <div class="progress-data">
-              <div id="chart3"></div>
+              <div id="chart3" style="font-size:65px"><i class="fa-solid fa-money-bill-1"></i></div>
             </div>
             <div class="widget-data">
               <div class="weight-600 font-14">Số Tiền</div>
@@ -61,7 +61,7 @@
         <div class="card-box height-100-p widget-style1">
           <div class="d-flex flex-wrap align-items-center">
             <div class="progress-data">
-              <div id="chart4"></div>
+              <div id="chart4" style="font-size:65px"><i class="fa-solid fa-file-invoice-dollar"></i></div>
             </div>
             <div class="widget-data">
               <div class="weight-600 font-14">Trả Phí Webiste </div>
@@ -75,7 +75,7 @@
         <div class="card-box height-100-p widget-style1">
           <div class="d-flex flex-wrap align-items-center">
             <div class="progress-data">
-              <div id="chart3"></div>
+              <div id="chart3" style="font-size:65px"><i class="fa-brands fa-paypal"></i></div>
             </div>
             <div class="widget-data">
               <?php  $sales = $total_price - $total?>

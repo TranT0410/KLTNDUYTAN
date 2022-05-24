@@ -59,9 +59,11 @@
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.edit', $user->id) }}"><i
                                                         class="dw dw-edit2"></i> Cập Nhật</a>
+                                                @if($user->role != config('constants.role_admin'))
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.delete', $user->id) }}"><i
                                                         class="dw dw-delete-3"></i> Xóa</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </td>
